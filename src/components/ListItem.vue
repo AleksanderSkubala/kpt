@@ -2,8 +2,11 @@
     <li class="item">
         <img :src="url" class="ui mini avatar image" />
         <div class="content">
-        <h4 class="header">{{this.title}}</h4>
-        <div class="description">{{this.description}}</div>
+            <h4 class="header">{{this.title}}</h4>
+            <div class="description">{{this.description}}</div>
+        </div>
+        <div class="content" style="float: right;">
+            <div class="description">{{this.date}}</div>
         </div>
     </li>
 </template>
@@ -22,7 +25,11 @@ export default {
         },
         description: {
             type: Text,
-            required: true,
+            required: false,
+        },
+        date: {
+            type: Date,
+            required: false,
         },
     },
     data() {

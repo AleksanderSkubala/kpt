@@ -4,16 +4,19 @@
             img="1"
             title="Lena"
             description="JavaScript dev"
+            date="2016-10-16"
         />
         <ListItem
             img="2"
             title="Rick"
             description="Seo"
+            date= "2016-10-16"
         />
         <ListItem
             img="3"
             title="Morty"
             description="Front-End dev"
+            date= "2016-10-16"
         />
       </ul>
 </template>

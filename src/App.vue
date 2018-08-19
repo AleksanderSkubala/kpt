@@ -4,12 +4,14 @@
     <main class="ui main text container">
       <List />
     </main>
+    <FormView />
   </div>
 </template>
 
 <script>
 import AppHeader from '@/components/AppHeader.vue';
 import List from '@/components/List.vue';
+import FormView from '@/components/FormView.vue';
 
 export default {
   name: 'app',
@@ -17,16 +19,16 @@ export default {
     AppHeader,
     List,
   },
-  methods: {
-    newK() {
-      console.log("Działa2");
-    },
-  },
   data() {
     return {
       step: 0,
       loading: false,
     };
+  },
+  methods: {
+    newK() {
+      this.step = 1;
+    },
   },
 };
 </script>
@@ -34,7 +36,7 @@ export default {
 <style lang="scss">
 
 body {
-  height: 0%;
+  height: 0;
 }
 
 .main.container {

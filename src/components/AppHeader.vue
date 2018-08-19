@@ -3,7 +3,7 @@
       <nav class="ui fixed menu">
         <div class="ui header item">Generator Konspektów</div>
         <div class="ui right floated header item">
-          <div class="ui animated button" tabindex="0" style="float: right;">
+          <div class="ui animated button" @click="$emit('newK')">
             <div class="visible content">Nowy</div>
             <div class="hidden content">
               <i class="plus icon"></i>
@@ -15,8 +15,9 @@
 </template>
 
 <script>
-export default {
-    name: "AppHeader"
+export default{
+  name: "Modal",
+  methods: {},
 }
 </script>
 

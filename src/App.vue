@@ -1,6 +1,6 @@
 <template>
   <div class="ui container">
-    <AppHeader />
+    <AppHeader @newK="newK"/>
     <main class="ui main text container">
       <List />
     </main>
@@ -17,10 +17,25 @@ export default {
     AppHeader,
     List,
   },
+  methods: {
+    newK() {
+      console.log("Działa2");
+    },
+  },
+  data() {
+    return {
+      step: 0,
+      loading: false,
+    };
+  },
 };
 </script>
 
 <style lang="scss">
+
+body {
+  height: 0%;
+}
 
 .main.container {
     margin-top: 5em;

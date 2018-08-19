@@ -16,19 +16,19 @@ export default {
     name: "ListItem",
     props: {
         img: {
-            type: Number,
+            type: String,
             required: true,
         },
         title: {
-            type: Text,
+            type: String,
             required: true,
         },
         description: {
-            type: Text,
+            type: String,
             required: false,
         },
         date: {
-            type: Date,
+            type: String,
             required: false,
         },
     },

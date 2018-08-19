@@ -18,6 +18,18 @@
             description="Front-End dev"
             date= "2016-10-16"
         />
+        <ListItem
+            img="4"
+            title="Adelle"
+            description="Back-End dev"
+            date= "2016-10-16"
+        />
+        <ListItem
+            img="5"
+            title="Charlie"
+            description="Designer"
+            date= "2016-10-16"
+        />
       </ul>
 </template>
 

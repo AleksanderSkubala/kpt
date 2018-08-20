@@ -1,11 +1,13 @@
 <template>
+<div>
   <div class="ui container">
     <AppHeader @newK="newK"/>
     <main class="ui main text container">
       <List />
     </main>
-    <FormView />
   </div>
+  <FormView v-if="step === 1" @back="back"/>
+</div>
 </template>
 
 <script>
@@ -18,6 +20,7 @@ export default {
   components: {
     AppHeader,
     List,
+    FormView,
   },
   data() {
     return {
@@ -29,6 +32,9 @@ export default {
     newK() {
       this.step = 1;
     },
+    back() {
+      this.step = 0;
+    }
   },
 };
 </script>

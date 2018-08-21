@@ -1,12 +1,16 @@
 <template>
 <div>
-  <div class="ui container">
-    <AppHeader @newK="newK"/>
-    <main class="ui main text container">
-      <List />
-    </main>
-  </div>
-  <FormView v-if="step === 1" @back="back"/>
+  <transition name="fade">
+    <div class="ui container" v-if="step === 0">
+      <AppHeader @newK="newK"/>
+      <main class="ui main text container">
+        <List />
+      </main>
+    </div>
+  </transition>
+  <transition name="slider">
+    <FormView v-if="step === 1" @back="back"/>
+  </transition>
 </div>
 </template>
 
@@ -47,6 +51,20 @@ body {
 
 .main.container {
     margin-top: 5em;
+}
+
+.slider-enter-active, .slider-leave-active {
+  transition: opacity 0.7s ease;
+}
+.slider-enter, .slider-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active, .fade-leave-active {
+   transition: opacity 0.5s ease;
+}
+.fade-enter, .fade-leave-to {
+   opacity: 0;
 }
 
 </style>

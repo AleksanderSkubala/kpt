@@ -4,7 +4,7 @@
         <thead>
             <tr>
                 <th colspan="2">
-                Git Repository
+                    Konspekt
                 </th>
             </tr>
         </thead>
@@ -35,32 +35,71 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    Cele:
+                    <table class="ui striped table">
+                        <thead>
+                            <tr>
+                                <th>Cele:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Jaki cel</td>
+                            </tr>
+                            <tr>
+                                <td>Jaki cel2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr style="background: none;">
+                <td colspan="2">
+                   <table class="ui striped table">
+                        <thead>
+                            <tr>
+                                <th colspan="4">Przebieg:</th>
+                            </tr>
+                            <tr>
+                                <th>Lp.</th>
+                                <th>Treść</th>
+                                <th>Czas</th>
+                                <th>Materiały</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1.</td>
+                                <td>Jaki pkt</td>
+                                <td>30min.</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>2.</td>
+                                <td>Jaki pkt2</td>
+                                <td>20min.</td>
+                                <td>-</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    *Tabela z celami*
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    Przebieg:
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    *Tabela z przebiegiem*
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    Załączniki:
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    *Tabela z załącznikami*
+                    <table class="ui striped table">
+                        <thead>
+                            <tr>
+                                <th>Załączniki:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Jaki załącznik</td>
+                            </tr>
+                            <tr>
+                                <td>Jaki załącznik2</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </td>
             </tr>
         </tbody>

@@ -45,10 +45,6 @@ export default {
 
 <style lang="scss">
 
-body {
-  height: 0;
-}
-
 .main.container {
     margin-top: 5em;
 }

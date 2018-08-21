@@ -37,4 +37,10 @@ export default {
     margin-bottom: 3em;
 }
 
+@media only screen and (max-width: 767px){
+    .main.container{
+        // width: 80vw !important;
+    }
+}
+
 </style>

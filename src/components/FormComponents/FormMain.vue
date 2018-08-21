@@ -1,6 +1,6 @@
 <template>
 <div>
-      <table class="ui celled striped center aligned table">
+      <table class="ui celled striped center aligned table" id="mainTable">
         <thead>
             <tr>
                 <th colspan="2">
@@ -120,4 +120,9 @@ ul.ui.list li:before{
     display: none;
 }
 
+@media only screen and (max-width: 767px){
+    table:first-child{
+        width: 70vw !important;
+    }
+}
 </style>

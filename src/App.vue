@@ -49,6 +49,12 @@ export default {
     margin-top: 5em;
 }
 
+@media only screen and (max-width: 767px){
+  .main.container{
+    // margin-left: 0;
+  }
+}
+
 .slider-enter-active, .slider-leave-active {
   transition: opacity 0.7s ease;
 }

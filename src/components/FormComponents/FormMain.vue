@@ -19,7 +19,9 @@
                 <td>
                     Odpowiedzialny/a:
                 </td>
-                <td>Initial commit</td>
+                <td>
+                    <input class="ui input" placeholder="Imię i Nazwisko" name="odpowiedzialny"/>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -31,7 +33,9 @@
                 <td>
                     Termin:
                 </td>
-                <td>Initial commit</td>
+                <td>
+                    <input class="ui input" type="date" name="odpowiedzialny"/>
+                </td>
             </tr>
             <tr>
                 <td colspan="2">

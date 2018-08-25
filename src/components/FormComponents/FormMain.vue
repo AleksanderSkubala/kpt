@@ -13,14 +13,32 @@
                 <td> <!--class="collapsing"-->
                     Nazwa zbiórki:
                 </td>
-                <td>Initial commit</td>
+                <td>
+                    <div class="ui action input">
+                        <input placeholder="Nazwa/Temat zbiórki" type="text" v-model="nazwa"/>
+                        <div class="ui positive button" @click="halo(`${nazwa}`)">
+                            <i class="check icon" style="margin:0;"></i>
+                        </div>
+                        <div class="ui negative button">
+                            <i class="plus icon" style="margin:0; transform: rotate(45deg);"></i>
+                        </div>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td>
                     Odpowiedzialny/a:
                 </td>
                 <td>
-                    <input class="ui input" placeholder="Imię i Nazwisko" name="odpowiedzialny"/>
+                    <div class="ui action input">
+                        <input placeholder="Imię i Nazwisko" type="text" :value="odpowiedzialny"/>
+                        <div class="ui positive button" @click="halo(`${odpowiedzialny}`)">
+                            <i class="check icon" style="margin:0;"></i>
+                        </div>
+                        <div class="ui negative button" @click="empty(`${odpowiedzialny}`)">
+                            <i class="plus icon" style="margin:0; transform: rotate(45deg);"></i>
+                        </div>
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -34,7 +52,15 @@
                     Termin:
                 </td>
                 <td>
-                    <input class="ui input" type="date" name="odpowiedzialny"/>
+                     <div class="ui action input">
+                        <input type="date" v-model="kiedy"/>
+                        <div class="ui positive button" @click="halo(`${kiedy}`)">
+                            <i class="check icon" style="margin:0;"></i>
+                        </div>
+                        <div class="ui negative button">
+                            <i class="plus icon" style="margin:0; transform: rotate(45deg);"></i>
+                        </div>
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -114,6 +140,24 @@
 <script>
 export default {
     name: "FormMain",
+    data(){
+        return{
+            nazwa:"",
+            odpowiedzialny: "",
+            kiedy: "",
+        };
+    },
+    methods: {
+        halo(co) {
+            if(co){
+                console.log(co);
+            }
+        },
+        empty(co) {
+            co = null;
+            console.log(co);
+        },
+    },
 }
 </script>
 

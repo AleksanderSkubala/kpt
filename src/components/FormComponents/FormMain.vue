@@ -14,10 +14,15 @@
                     Nazwa zbiórki:
                 </td>
                 <td>
-                    <p v-if="edit[0] === false">{{nazwa.content}}</p>
-                    <div class="ui action input" v-if="edit[0]">
+                    <div v-if="nazwa.edit === false">
+                        {{nazwa.content}}
+                        <div class="ui right floated button" style="background: none;">
+                            <i class="ui edit outline icon" style="margin: 0; font-size: 20px;"></i>
+                        </div>
+                    </div>
+                    <div class="ui action input" v-if="nazwa.edit">
                         <input placeholder="Nazwa/Temat zbiórki" type="text" v-model="nazwa.content"/>
-                        <div class="ui positive button" @click="halo(`${nazwa.content}`, 0)">
+                        <div class="ui positive button" @click="function (){nazwa.edit=false;}">
                             <i class="check icon" style="margin:0;"></i>
                         </div>
                         <div class="ui negative button">
@@ -163,17 +168,14 @@ export default {
             },
             odpowiedzialny: "",
             kiedy: "",
-            edit: [
-                true
-            ],
         };
     },
     methods: {
-        halo(co, ed) {
+        halo(co) {
             if(co){
-                console.log(co);
-                this.edit[ed] = false;
-                console.log(this.edit[ed]);
+                console.log(data[0[0]]);
+                data[0[1]] = false;
+                console.log(data[0[1]]);
             }
         },
         empty(co) {

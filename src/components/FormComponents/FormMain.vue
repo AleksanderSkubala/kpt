@@ -15,17 +15,17 @@
                 </td>
                 <td>
                     <div v-if="nazwa.edit === false">
-                        {{nazwa.content}}
-                        <div class="ui right floated button" style="background: none;">
+                        <p>{{nazwa.content}}</p>
+                        <div class="ui right floated button" style="background: none;" @click="edit(0)">
                             <i class="ui edit outline icon" style="margin: 0; font-size: 20px;"></i>
                         </div>
                     </div>
                     <div class="ui action input" v-if="nazwa.edit">
-                        <input placeholder="Nazwa/Temat zbiórki" type="text" v-model="nazwa.content"/>
-                        <div class="ui positive button" @click="function (){nazwa.edit=false;}">
+                        <input placeholder="Nazwa/Temat zbiórki" type="text" v-model="nazwa.probably"/>
+                        <div class="ui positive button" @click="check(0)">
                             <i class="check icon" style="margin:0;"></i>
                         </div>
-                        <div class="ui negative button">
+                        <div class="ui negative button" @click="cancel(0)">
                             <i class="plus icon" style="margin:0; transform: rotate(45deg);"></i>
                         </div>
                     </div>
@@ -165,27 +165,35 @@ export default {
             nazwa: {
                 content: "",
                 edit: true,
+                probably: "",
             },
-            odpowiedzialny: "",
-            kiedy: "",
+            odpowiedzialny: {
+                content: "",
+                edit: true,
+                probably: "",
+            },
+            kiedy: {
+                content: "",
+                edit: true,
+                probably: "",
+            },
         };
     },
     methods: {
-        halo(co) {
-            if(co){
-                console.log(data[0[0]]);
-                data[0[1]] = false;
-                console.log(data[0[1]]);
-            }
+        check(what){
+            this.nazwa.edit = false;
+            this.nazwa.content = this.nazwa.probably;
         },
-        empty(co) {
-
-            console.log(co);
+        cancel(what){
+            this.nazwa.edit = false;
+        },
+        edit(what){
+            this.nazwa.edit = true;
+            this.nazwa.probably = this.nazwa.content;
         },
     },
     mounted() {
         this.dzisiaj = (new Date()).getDate();
-        console.log(this.dzisiaj);
     },
 }
 </script>
@@ -197,9 +205,9 @@ ul.ui.list li:before{
     display: none;
 }
 
-@media only screen and (max-width: 767px){
-    table:first-child{
-        width: 70vw !important;
-    }
-}
+// @media only screen and (max-width: 767px){
+//     table:first-child{
+//         width: 70vw !important;
+//     }
+// }
 </style>

@@ -32,14 +32,14 @@ export default {
 }
 
 .main.container{
-    margin-right: auto !important;
+    margin-right: auto;
     margin-top: 5.5em;
     margin-bottom: 3em;
 }
 
-@media only screen and (max-width: 767px){
-    .main.container{
-        // width: 80vw !important;
+@media only screen and (max-width: 575px){
+    .ui.main.container{
+        margin-left: 0 !important;
     }
 }
 

@@ -15,9 +15,9 @@
                 </td>
                 <td>
                     <div v-if="nazwa.edit === false">
-                        <p>{{nazwa.content}}</p>
-                        <div class="ui right floated button" style="background: none;" @click="edit(0)">
-                            <i class="ui edit outline icon" style="margin: 0; font-size: 20px;"></i>
+                        {{nazwa.content}}
+                        <div class="ui right floated button editBtn" @click="edit(0)">
+                            <i class="ui edit outline icon editIcon"></i>
                         </div>
                     </div>
                     <div class="ui action input" v-if="nazwa.edit">
@@ -26,7 +26,7 @@
                             <i class="check icon" style="margin:0;"></i>
                         </div>
                         <div class="ui negative button" @click="cancel(0)">
-                            <i class="plus icon" style="margin:0; transform: rotate(45deg);"></i>
+                            <i class="plus icon cancelIcon"></i>
                         </div>
                     </div>
                 </td>
@@ -36,13 +36,19 @@
                     Odpowiedzialny/a:
                 </td>
                 <td>
-                    <div class="ui action input">
-                        <input placeholder="Imię i Nazwisko" type="text" v-model="odpowiedzialny"/>
-                        <div class="ui positive button" @click="halo(`${odpowiedzialny}`)">
+                    <div v-if="odpowiedzialny.edit === false">
+                        {{odpowiedzialny.content}}
+                        <div class="ui right floated button editBtn" @click="edit(1)">
+                            <i class="ui edit outline icon editIcon"></i>
+                        </div>
+                    </div>
+                    <div class="ui action input" v-if="odpowiedzialny.edit">
+                        <input placeholder="Odpowiedzialny" type="text" v-model="odpowiedzialny.probably"/>
+                        <div class="ui positive button" @click="check(1)">
                             <i class="check icon" style="margin:0;"></i>
                         </div>
-                        <div class="ui negative button" @click="empty(`${odpowiedzialny}`)">
-                            <i class="plus icon" style="margin:0; transform: rotate(45deg);"></i>
+                        <div class="ui negative button" @click="cancel(1)">
+                            <i class="plus icon cancelIcon"></i>
                         </div>
                     </div>
                 </td>
@@ -52,13 +58,19 @@
                     Termin:
                 </td>
                 <td>
-                     <div class="ui action input">
-                        <input type="date" v-model="kiedy" :placeholder="dzisiaj"/>
-                        <div class="ui positive button" @click="halo(`${kiedy}`)">
+                    <div v-if="kiedy.edit === false">
+                        {{kiedy.content}}
+                        <div class="ui right floated button editBtn" @click="edit(2)">
+                            <i class="ui edit outline icon editIcon"></i>
+                        </div>
+                    </div>
+                    <div class="ui action input" v-if="kiedy.edit">
+                        <input type="date" v-model="kiedy.probably"/>
+                        <div class="ui positive button" @click="check(2)">
                             <i class="check icon" style="margin:0;"></i>
                         </div>
-                        <div class="ui negative button">
-                            <i class="plus icon" style="margin:0; transform: rotate(45deg);"></i>
+                        <div class="ui negative button" @click="cancel(2)">
+                            <i class="plus icon cancelIcon"></i>
                         </div>
                     </div>
                 </td>
@@ -181,13 +193,76 @@ export default {
     },
     methods: {
         check(what){
-            this.nazwa.edit = false;
-            this.nazwa.content = this.nazwa.probably;
+            switch (what) {
+                case 0:
+                    if(this.nazwa.probably){
+                        this.nazwa.edit = false;
+                        this.nazwa.content = this.nazwa.probably;
+                    }
+                break;
+
+                case 1:
+                    if(this.odpowiedzialny.probably){
+                        this.odpowiedzialny.edit = false;
+                        this.odpowiedzialny.content = this.odpowiedzialny.probably;
+                    }
+                break;
+
+                case 2:
+                    if(this.kiedy.probably){
+                        this.kiedy.edit = false;
+                        this.kiedy.content = this.kiedy.probably;
+                    }
+                break;
+
+                default:
+                break;
+            }
         },
         cancel(what){
-            this.nazwa.edit = false;
+            switch (what) {
+                case 0:
+                    if(this.nazwa.probably){
+                        this.nazwa.edit = false;
+                    }
+                break;
+
+                case 1:
+                    if(this.odpowiedzialny.probably){
+                        this.odpowiedzialny.edit = false;
+                    }
+                break;
+
+                case 2:
+                    if(this.kiedy.probably){
+                        this.kiedy.edit = false;
+                    }
+                break;
+
+                default:
+                break;
+            }
         },
         edit(what){
+            switch (what) {
+                case 0:
+                    this.nazwa.edit = true;
+                    this.nazwa.probably = this.nazwa.content;
+                break;
+
+                case 1:
+                    this.odpowiedzialny.edit = true;
+                    this.odpowiedzialny.probably = this.odpowiedzialny.content;
+                break;
+
+                case 2:
+                    this.kiedy.edit = true;
+                    this.kiedy.probably = this.kiedy.content;
+                break;
+
+                default:
+                break;
+            }
             this.nazwa.edit = true;
             this.nazwa.probably = this.nazwa.content;
         },
@@ -205,9 +280,31 @@ ul.ui.list li:before{
     display: none;
 }
 
-// @media only screen and (max-width: 767px){
-//     table:first-child{
-//         width: 70vw !important;
-//     }
-// }
+
+.editBtn {
+    background: none;
+    padding: 0;
+    padding-top: 0.3em;
+}
+
+.editBtn:hover{
+    background: none;
+}
+
+.editIcon{
+    margin: 0;
+    font-size: 20px;
+}
+
+.cancelIcon{
+    margin :0 !important;
+    transform: rotate(45deg);
+}
+
+@media only screen and (max-width: 767px){
+    table:first-child{
+        max-width:100%;
+    }
+}
+
 </style>

@@ -23,4 +23,11 @@ export default{
 
 <style lang="scss" scoped>
 
+@media only screen and (max-width: 575px){
+  .ui.right.floated.header.item::before{
+    display:none;
+    content: '';
+  }
+}
+
 </style>

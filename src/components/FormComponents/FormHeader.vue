@@ -46,4 +46,15 @@ export default {
     margin-left: 20px;
 }
 
+@media only screen and (max-width: 575px){
+    .ui.right.floated.header.item::before{
+        display: none;
+        content: '';
+    }
+
+    #btnBack{
+        padding: 0;
+    }
+}
+
 </style>

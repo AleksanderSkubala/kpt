@@ -30,7 +30,7 @@
             description="Designer"
             date= "2016-10-16"
         />
-      </ul>
+    </ul>
 </template>
 
 <script>

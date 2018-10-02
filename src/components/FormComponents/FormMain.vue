@@ -89,7 +89,24 @@
                                     <ul class="ui divided list segments" style="margin: 0;">
                                         <li class="ui segment" style="padding: 10px;"><em>Prowadzący: </em></li>
                                         <li v-for="item in people.list" class="ui segment" style="padding: 10px;">
-                                            - {{item}}
+                                            <div v-if="people.edit === false">
+                                                - {{item}}
+                                                <div class="ui right floated button editBtn" style="padding-top: 0;" @click="deleteList(0)">
+                                                    <i class="ui cancel outline icon editIcon"></i>
+                                                </div>
+                                                <div class="ui right floated button editBtn" style="padding-top: 0;" @click="editList(0, item)">
+                                                    <i class="ui edit outline icon editIcon"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ui action add input" style="margin-top: 5px;" v-if="people.edit">
+                                                <input type="text" v-model="people.editContent"/>
+                                                <div class="ui positive button" @click="">
+                                                    <i class="check icon" style="margin: 0;"></i>
+                                                </div>
+                                                <div class="ui negative button" @click="">
+                                                    <i class="plus icon cancelIcon"></i>
+                                                </div>
+                                            </div>
                                         </li>
                                     </ul>
                                 </td>
@@ -221,7 +238,7 @@
                                 </td>
                                 <td style="width: 50%;">
                                     <div class="ui action add input">
-                                        <input type="text" v-model="added.probably" placeholder="Cele"/>
+                                        <input type="text" v-model="added.probably" placeholder="Załączniki"/>
                                         <div class="ui positive button" @click="add(2)">
                                             <i class="plus icon" style="margin: 0;"></i>
                                         </div>
@@ -264,14 +281,18 @@ export default {
             people: {
                 probably: "",
                 list: [],
+                edit: false,
+                editContent: "",
             },
             goals: {
                 probably: "",
                 list: [],
+                edit: false,
             },
             added: {
                 probably: "",
                 list: [],
+                edit: false,
             },
         };
     },
@@ -367,16 +388,22 @@ export default {
         add(what){
             switch (what) {
                 case 0:
-                    this.people.list.push(this.people.probably);
-                    this.people.probably = "";
+                    if(this.people.probably){
+                        this.people.list.push(this.people.probably);
+                        this.people.probably = "";
+                    }
                 break;
                 case 1:
-                    this.goals.list.push(this.goals.probably);
-                    this.goals.probably = "";
+                    if(this.goals.probably){
+                        this.goals.list.push(this.goals.probably);
+                        this.goals.probably = "";
+                    }
                 break;
                 case 2:
-                    this.added.list.push(this.added.probably);
-                    this.added.probably = "";
+                    if(this.added.probably){
+                        this.added.list.push(this.added.probably);
+                        this.added.probably = "";
+                    }
                 break;
             }
         },
@@ -393,6 +420,15 @@ export default {
                 break;
             }
         },
+        editList(what, item){
+            switch(what) {
+                case 0:
+                    this.people.editContent = item;
+                    this.people.edit = true;
+                break;
+            }
+        },
+        deleteList(){},
         up(list, item){
             var index = "";
             switch(list){

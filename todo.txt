@@ -1,0 +1,49 @@
+KPT - TODO list:
+
+[] - not done
+[/] - in progress
+[x] - done
+
+**Front-end**
+
+[x] Change placeholder for 'added' on 'załączniki'
+[x] Prepare to 'cancel' and 'edit'
+
+**Back-end**
+
+[x] Do validation for form type 2
+[] Add function for canceling and editing(form type 2)
+    > [] Do function for canceling
+    > [/] Do function for editing
+
+**Front-end**
+
+[] Do inputs for form type 3
+    > [] Do input for 'content'
+    > [] Do input for 'time'
+    > [] Do input for 'materials'
+[] Add cancel and edit icon for form 3
+
+
+**Back-end**
+
+[] Add handlers for inputs in form 3
+    > [] Add 'add' function
+    > [] Add 'edit' function
+    > [] Add 'cancel' function
+    > [] Add 'delete' function
+    > [] Add 'up' function
+    > [] Add 'down' function
+[] Add validation for form 3
+
+**Front-end**
+
+[] Do main form relative
+    > [] Do main table thiner
+    > [] Do header thiner
+[] Move styles from html to css(not for exceptions)
+
+**Test**
+
+[] Check responsibility
+[] Check working

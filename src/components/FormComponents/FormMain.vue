@@ -89,21 +89,21 @@
                                     <ul class="ui divided list segments" style="margin: 0;">
                                         <li class="ui segment" style="padding: 10px;"><em>Prowadzący: </em></li>
                                         <li v-for="item in people.list" class="ui segment" style="padding: 10px;">
-                                            <div v-if="people.edit === false">
-                                                - {{item}}
-                                                <div class="ui right floated button editBtn" style="padding-top: 0;" @click="deleteList(0)">
+                                            <div v-if="item.edit === false">
+                                                <div class="itemName">{{item.name}}</div>
+                                                <div class="ui right floated button editBtn" style="padding-top: 0;" @click="deleteList(0, item)">
                                                     <i class="ui cancel outline icon editIcon"></i>
                                                 </div>
                                                 <div class="ui right floated button editBtn" style="padding-top: 0;" @click="editList(0, item)">
                                                     <i class="ui edit outline icon editIcon"></i>
                                                 </div>
                                             </div>
-                                            <div class="ui action add input" style="margin-top: 5px;" v-if="people.edit">
-                                                <input type="text" v-model="people.editContent"/>
-                                                <div class="ui positive button" @click="">
+                                            <div class="ui action add input" style="margin-top: 5px;" v-if="item.edit">
+                                                <input type="text" v-model="item.editContent"/>
+                                                <div class="ui positive button" @click="confirm(0, item)">
                                                     <i class="check icon" style="margin: 0;"></i>
                                                 </div>
-                                                <div class="ui negative button" @click="">
+                                                <div class="ui negative button" @click="item.edit = false">
                                                     <i class="plus icon cancelIcon"></i>
                                                 </div>
                                             </div>
@@ -113,7 +113,7 @@
                                 <td style="width: 50%;">
                                     <div class="ui action add input">
                                         <input type="text" v-model="people.probably" placeholder="Prowadzący"/>
-                                        <div class="ui positive button" @click="add(0)">
+                                        <div class="ui yellow button" @click="add(0)">
                                             <i class="plus icon" style="margin: 0;"></i>
                                         </div>
                                         <div class="ui negative button" @click="cancelList(0)">
@@ -138,16 +138,33 @@
                             <tr>
                                 <td style="width: 50%;">
                                     <ul class="ui divided list segments" style="margin: 0;">
-                                        <li class="ui segment" style="padding: 10px;"><em>Harcerz po zbiórce będzie umiał:</em></li>
+                                        <li class="ui segment" style="padding: 10px;"><em>Harcerz po zbiórce będzie umiał: </em></li>
                                         <li v-for="item in goals.list" class="ui segment" style="padding: 10px;">
-                                            - {{item}}
+                                            <div v-if="item.edit === false">
+                                                <div class="itemName">{{item.name}}</div>
+                                                <div class="ui right floated button editBtn" style="padding-top: 0;" @click="deleteList(1, item)">
+                                                    <i class="ui cancel outline icon editIcon"></i>
+                                                </div>
+                                                <div class="ui right floated button editBtn" style="padding-top: 0;" @click="editList(1, item)">
+                                                    <i class="ui edit outline icon editIcon"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ui action add input" style="margin-top: 5px;" v-if="item.edit">
+                                                <input type="text" v-model="item.editContent"/>
+                                                <div class="ui positive button" @click="confirm(1, item)">
+                                                    <i class="check icon" style="margin: 0;"></i>
+                                                </div>
+                                                <div class="ui negative button" @click="item.edit = false">
+                                                    <i class="plus icon cancelIcon"></i>
+                                                </div>
+                                            </div>
                                         </li>
                                     </ul>
                                 </td>
                                 <td style="width: 50%;">
                                     <div class="ui action add input">
                                         <input type="text" v-model="goals.probably" placeholder="Cele"/>
-                                        <div class="ui positive button" @click="add(1)">
+                                        <div class="ui yellow button" @click="add(1)">
                                             <i class="plus icon" style="margin: 0;"></i>
                                         </div>
                                         <div class="ui negative button" @click="cancelList(1)">
@@ -230,16 +247,33 @@
                             <tr>
                                 <td style="width: 50%;">
                                     <ul class="ui divided list segments" style="margin: 0;">
-                                        <li class="ui segment" style="padding: 10px;"><em>Dodatkowe materiały: </em></li>
+                                        <li class="ui segment" style="padding: 10px;"><em>Materiały dodatkowe: </em></li>
                                         <li v-for="item in added.list" class="ui segment" style="padding: 10px;">
-                                            - {{item}}
+                                            <div v-if="item.edit === false">
+                                                <div class="itemName">{{item.name}}</div>
+                                                <div class="ui right floated button editBtn" style="padding-top: 0;" @click="deleteList(2, item)">
+                                                    <i class="ui cancel outline icon editIcon"></i>
+                                                </div>
+                                                <div class="ui right floated button editBtn" style="padding-top: 0;" @click="editList(2, item)">
+                                                    <i class="ui edit outline icon editIcon"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ui action add input" style="margin-top: 5px;" v-if="item.edit">
+                                                <input type="text" v-model="item.editContent"/>
+                                                <div class="ui positive button" @click="confirm(2, item)">
+                                                    <i class="check icon" style="margin: 0;"></i>
+                                                </div>
+                                                <div class="ui negative button" @click="item.edit = false">
+                                                    <i class="plus icon cancelIcon"></i>
+                                                </div>
+                                            </div>
                                         </li>
                                     </ul>
                                 </td>
                                 <td style="width: 50%;">
                                     <div class="ui action add input">
-                                        <input type="text" v-model="added.probably" placeholder="Załączniki"/>
-                                        <div class="ui positive button" @click="add(2)">
+                                        <input type="text" v-model="added.probably" placeholder="Materiały"/>
+                                        <div class="ui yellow button" @click="add(2)">
                                             <i class="plus icon" style="margin: 0;"></i>
                                         </div>
                                         <div class="ui negative button" @click="cancelList(2)">
@@ -281,18 +315,14 @@ export default {
             people: {
                 probably: "",
                 list: [],
-                edit: false,
-                editContent: "",
             },
             goals: {
                 probably: "",
                 list: [],
-                edit: false,
             },
             added: {
                 probably: "",
                 list: [],
-                edit: false,
             },
         };
     },
@@ -389,19 +419,31 @@ export default {
             switch (what) {
                 case 0:
                     if(this.people.probably){
-                        this.people.list.push(this.people.probably);
+                        this.people.list.push({
+                            name: this.people.probably,
+                            edit: false,
+                            editContent: '',
+                        });
                         this.people.probably = "";
                     }
                 break;
                 case 1:
                     if(this.goals.probably){
-                        this.goals.list.push(this.goals.probably);
+                        this.goals.list.push({
+                            name: this.goals.probably,
+                            edit: false,
+                            editContent: '',
+                        });
                         this.goals.probably = "";
                     }
                 break;
                 case 2:
                     if(this.added.probably){
-                        this.added.list.push(this.added.probably);
+                        this.added.list.push({
+                            name: this.added.probably,
+                            edit: false,
+                            editContent: '',
+                        });
                         this.added.probably = "";
                     }
                 break;
@@ -421,14 +463,82 @@ export default {
             }
         },
         editList(what, item){
+            var index;
             switch(what) {
                 case 0:
-                    this.people.editContent = item;
-                    this.people.edit = true;
+                    index = this.people.list.indexOf(item);
+                    this.people.list[index].editContent = this.people.list[index].name;
+                    this.people.list[index].edit = true;
+                break;
+
+                case 1:
+                    index = this.goals.list.indexOf(item);
+                    this.goals.list[index].editContent = this.goals.list[index].name;
+                    this.goals.list[index].edit = true;
+                break;
+
+                case 2:
+                    index = this.added.list.indexOf(item);
+                    this.added.list[index].editContent = this.added.list[index].name;
+                    this.added.list[index].edit = true;
                 break;
             }
         },
-        deleteList(){},
+        confirm(list, item){
+            var index;
+            switch (list) {
+                case 0:
+                    index = this.people.list.indexOf(item);
+                    this.people.list[index].name = this.people.list[index].editContent;
+                    this.people.list[index].edit = false;
+                break;
+
+                case 1:
+                    index = this.goals.list.indexOf(item);
+                    this.goals.list[index].name = this.goals.list[index].editContent;
+                    this.goals.list[index].edit = false;
+                break;
+
+                case 2:
+                    index = this.added.list.indexOf(item);
+                    this.added.list[index].name = this.added.list[index].editContent;
+                    this.added.list[index].edit = false;
+                break;
+
+                default:
+                break;
+            }
+        },
+        deleteList(what, item){
+            var index;
+            var newLess;
+            var newMore;
+            switch (what) {
+                case 0:
+                    index = this.people.list.indexOf(item);
+                    newLess = this.people.list.slice(0, index);
+                    newMore = this.people.list.slice(index+1);
+                    this.people.list = [].concat(newLess, newMore);
+                break;
+
+                case 1:
+                    index = this.goals.list.indexOf(item);
+                    newLess = this.goals.list.slice(0, index);
+                    newMore = this.goals.list.slice(index+1);
+                    this.goals.list = [].concat(newLess, newMore);
+                break;
+
+                case 2:
+                    index = this.added.list.indexOf(item);
+                    newLess = this.added.list.slice(0, index);
+                    newMore = this.added.list.slice(index+1);
+                    this.added.list = [].concat(newLess, newMore);
+                break;
+
+                default:
+                break;
+            }
+        },
         up(list, item){
             var index = "";
             switch(list){
@@ -495,6 +605,11 @@ ul.ui.list li:before{
 
 .listS{
     padding: 10px;
+}
+
+.itemName {
+    display: inline-block;
+    max-width: 70%;
 }
 
 </style>

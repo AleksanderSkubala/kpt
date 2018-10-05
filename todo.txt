@@ -12,9 +12,9 @@ KPT - TODO list:
 **Back-end**
 
 [x] Do validation for form type 2
-[] Add function for canceling and editing(form type 2)
-    > [] Do function for canceling
-    > [/] Do function for editing
+[x] Add function for deleting and editing(form type 2)
+    > [x] Do function for deleting
+    > [x] Do function for editing
 
 **Front-end**
 

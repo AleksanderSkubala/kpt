@@ -196,7 +196,7 @@
                             <tr>
                                 <td>1.</td>
                                 <td>Jaki pkt</td>
-                                <td>30min.</td>
+                                <td class="time">30min.</td>
                                 <td>-</td>
                                 <td>
                                     <div style="float: right;">
@@ -213,22 +213,30 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>2.</td>
-                                <td>Jaki pkt2</td>
-                                <td>20min.</td>
-                                <td> - </td>
+                                <td colspan="2">
+                                    <div class="ui input processInput">
+                                        <input type="text" placeholder="Treść"/>
+                                    </div>
+                                </td>
                                 <td>
-                                    <div style="float: right;">
-                                                <div class="ui button" style="padding: 0; background: none;"  @click="up(0, item)">
-                                                <i class="angle up icon" style="margin: 0; font-size: 20px;"></i>
-                                                </div>
-                                                <div class="ui button" style="padding: 0; background: none;" @click="down(0, item)">
-                                                <i class="angle down icon" style="margin: 0; font-size: 20px;"></i>
-                                                </div>
-                                                <div class="ui button" style="padding: 0; background: none;">
-                                                <i class="delete icon" style="margin: 0; font-size: 20px;"></i>
-                                                </div>
-                                        </div>
+                                    <div class="ui input processInput">
+                                        <input type="text" class="time" placeholder="Czas"/>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="ui input processInput">
+                                        <input type="text" placeholder="Materiały"/>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="ui buttons">
+                                        <button class="ui yellow button">
+                                            <i class="ui plus icon" style="margin: 0;"></i>
+                                        </button>
+                                        <button class="ui negative button">
+                                            <i class="ui plus icon cancelIcon" style="margin: 0;"></i>
+                                        </button>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -322,6 +330,10 @@ export default {
             },
             added: {
                 probably: "",
+                list: [],
+            },
+            process: {
+                probably: [],
                 list: [],
             },
         };
@@ -572,6 +584,9 @@ ul.ui.list li:before{
     display: none;
 }
 
+#mainTable {
+    width: 100%;
+}
 
 .editBtn {
     background: none;
@@ -610,6 +625,14 @@ ul.ui.list li:before{
 .itemName {
     display: inline-block;
     max-width: 70%;
+}
+
+.processInput input {
+    width: 60%;
+}
+
+.time {
+    display: inline-block;
 }
 
 </style>

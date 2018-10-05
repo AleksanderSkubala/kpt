@@ -15,17 +15,21 @@ KPT - TODO list:
 [x] Add function for deleting and editing(form type 2)
     > [x] Do function for deleting
     > [x] Do function for editing
+[x] Create structure(array) for form type 3
+    > [x] Do array
 
 **Front-end**
 
 [] Do inputs for form type 3
-    > [] Do input for 'content'
-    > [] Do input for 'time'
-    > [] Do input for 'materials'
-[] Add cancel and edit icon for form 3
+    > [x] Do input for 'content'
+    > [x] Do input for 'time'
+    > [/] Do input for 'materials'
+[x] Add cancel and edit icons for form 3
 
 
 **Back-end**
+
+[] Add v-models
 
 [] Add handlers for inputs in form 3
     > [] Add 'add' function

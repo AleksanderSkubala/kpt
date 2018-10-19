@@ -1,6 +1,6 @@
 <template>
 <div>
-      <table class="ui celled striped center aligned table" id="mainTable">
+      <table class="ui celled center aligned table" id="mainTable">
         <thead>
             <tr>
                 <th colspan="2">
@@ -212,7 +212,7 @@
                                         </div>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr id="todoRow">
                                 <td colspan="2">
                                     <div class="ui input processInput">
                                         <input type="text" placeholder="Treść"/>
@@ -229,7 +229,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="ui buttons">
+                                    <div class="ui buttons" id="todoBtn">
                                         <button class="ui yellow button">
                                             <i class="ui plus icon" style="margin: 0;"></i>
                                         </button>
@@ -241,6 +241,27 @@
                             </tr>
                         </tbody>
                     </table>
+                    <div class="ui segment" id="todoDiv">
+                        <div id="todoInputs">
+                            <div class="ui input processInput2">
+                                <input type="text" placeholder="Treść" v-model="todo.probably[0]"/>
+                            </div>
+                            <div class="ui input processInput2 time">
+                                <input type="text" placeholder="Czas" v-model="todo.probably[1]"/>
+                            </div>
+                            <div class="ui input processInput2">
+                                <input type="text" placeholder="Materiały" v-model="todo.probably[2]"/>
+                            </div>
+                            <div class="ui buttons" id="todoBtn">
+                                <button class="ui yellow button" @click="todoAdd()">
+                                    <i class="ui plus icon" style="margin: 0;"></i>
+                                </button>
+                                <button class="ui negative button">
+                                    <i class="ui plus icon cancelIcon" style="margin: 0;"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -332,7 +353,7 @@ export default {
                 probably: "",
                 list: [],
             },
-            process: {
+            todo: {
                 probably: [],
                 list: [],
             },
@@ -570,6 +591,20 @@ export default {
                 break;
             }
         },
+        todoAdd(){
+            console.log(this.todo.probably[0]);
+            console.log(this.todo.probably[1]);
+            console.log(this.todo.probably[2]);
+
+            if(this.todo.probably[0]){
+                this.todo.list.push({
+                    content: this.todo.probably[0],
+                    time: this.todo.probably[1],
+                    materials: this.todo.probably[2],
+                });
+                console.log(this.todo.list);
+            }
+        },
     },
     mounted() {
         this.today = (new Date()).getDate();
@@ -586,6 +621,7 @@ ul.ui.list li:before{
 
 #mainTable {
     width: 100%;
+    // border-color: rgba(34,36,38,.30);
 }
 
 .editBtn {
@@ -616,6 +652,27 @@ ul.ui.list li:before{
     table:first-child{
         max-width:100%;
     }
+
+    #todoDiv {
+        display: none;
+    }
+
+    .processInput{
+        width: 100%;
+        padding: 10px;
+    }
+
+    #todoBtn{
+        display: flex;
+        justify-content: center;
+    }
+
+}
+
+@media screen and (min-width: 576px) {
+    #todoRow{
+        display: none !important;
+    }
 }
 
 .listS{
@@ -627,12 +684,40 @@ ul.ui.list li:before{
     max-width: 70%;
 }
 
-.processInput input {
-    width: 60%;
+.todoInputs {
+    width: 100%;
+}
+
+.processInput{
+    display: flex;
+    float: left;
+}
+
+#todoDiv {
+    border: none !important;
+    box-shadow: none;
+}
+
+.processInput2{
+    display: flex;
+    float: left;
+
+    width: 40%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.processInput input{
+    width: 70%;
 }
 
 .time {
-    display: inline-block;
+    width: 20% !important;
+}
+
+#todoBtn {
+    clear: both;
+    margin-top: 10px;
 }
 
 </style>

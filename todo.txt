@@ -4,6 +4,8 @@ KPT - TODO list:
 [/] - in progress
 [x] - done
 
+###Aplication###
+
 **Front-end**
 
 [x] Change placeholder for 'added' on 'załączniki'
@@ -20,25 +22,25 @@ KPT - TODO list:
 
 **Front-end**
 
-[] Do inputs for form type 3
+[x] Do inputs for form type 3
     > [x] Do input for 'content'
     > [x] Do input for 'time'
-    > [/] Do input for 'materials'
+    > [x] Do input for 'materials'
 [x] Add cancel and edit icons for form 3
 
 
 **Back-end**
 
-[] Add v-models
+[x] Add v-models
 
-[] Add handlers for inputs in form 3
-    > [] Add 'add' function
+[/] Add handlers for inputs in form 3
+    > [x] Add 'add' function
     > [] Add 'edit' function
-    > [] Add 'cancel' function
-    > [] Add 'delete' function
-    > [] Add 'up' function
-    > [] Add 'down' function
-[] Add validation for form 3
+    > [x] Add 'cancel' function
+    > [x] Add 'delete' function
+    > [x] Add 'up' function
+    > [x] Add 'down' function
+[/] Add validation for form 3
 
 **Front-end**
 
@@ -47,7 +49,21 @@ KPT - TODO list:
     > [] Do header thiner
 [] Move styles from html to css(not for exceptions)
 
+***Back-end***(Connected with API)
+
+[] Do handler for 'Save' button
+[] Connect with KPT-API
+
 **Test**
 
 [] Check responsibility
 [] Check working
+
+
+###API###
+
+***Back-end***
+
+[] Do PDF-Project
+[] Deploy
+[] Push on gh-paghes

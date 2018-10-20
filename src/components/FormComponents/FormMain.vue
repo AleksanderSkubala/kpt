@@ -194,20 +194,23 @@
                         </thead>
                         <tbody>
                             <tr v-for="item in todo.list">
-                                <td>{{todoIndex(item)}} . </td>
+                                <td>{{todoIndex(item)}} .</td>
                                 <td>{{item.content}}</td>
                                 <td class="time">{{item.time}}</td>
                                 <td>{{item.materials}}</td>
                                 <td>
                                     <div style="float: right;">
-                                                <div class="ui button" style="padding: 0; background: none;"  @click="up(0, item)">
+                                                <div class="ui button" style="padding: 0; background: none;"  @click="up(item)">
                                                     <i class="angle up icon" style="margin: 0; font-size: 20px;"></i>
                                                 </div>
-                                                <div class="ui button" style="padding: 0; background: none;" @click="down(0, item)">
+                                                <div class="ui button" style="padding: 0; background: none;" @click="down(item)">
                                                     <i class="angle down icon" style="margin: 0; font-size: 20px;"></i>
                                                 </div>
                                                 <div class="ui button" style="padding: 0; background: none;" @click="todoDelete(item)">
                                                     <i class="delete icon" style="margin: 0; font-size: 20px;"></i>
+                                                </div>
+                                                <div class="ui button" style="padding: 0; background: none;" @click="todoEdit(item)">
+                                                    <i class="ui edit outline icon editIcon" style="margin: 0; font-size: 20px;"></i>
                                                 </div>
                                         </div>
                                 </td>
@@ -215,26 +218,26 @@
                             <tr id="todoRow">
                                 <td colspan="2">
                                     <div class="ui input processInput">
-                                        <input type="text" placeholder="Treść"/>
+                                        <input type="text" placeholder="Treść" v-model="todo.probablyContent"/>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="ui input processInput">
-                                        <input type="text" class="time" placeholder="Czas"/>
+                                        <input type="text" class="time" placeholder="Czas" v-model="todo.probablyTime"/>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="ui input processInput">
-                                        <input type="text" placeholder="Materiały"/>
+                                        <input type="text" placeholder="Materiały" v-model="todo.probablyMaterials"/>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="ui buttons" id="todoBtn">
                                         <button class="ui yellow button">
-                                            <i class="ui plus icon" style="margin: 0;"></i>
+                                            <i class="ui plus icon" style="margin: 0;" @click="todoAdd" tabindex="0"></i>
                                         </button>
                                         <button class="ui negative button">
-                                            <i class="ui plus icon cancelIcon" style="margin: 0;"></i>
+                                            <i class="ui plus icon cancelIcon" style="margin: 0;" @click="todoCancel" tabindex="0"></i>
                                         </button>
                                     </div>
                                 </td>
@@ -243,20 +246,20 @@
                     </table>
                     <div class="ui segment" id="todoDiv">
                         <div id="todoInputs">
-                            <div class="ui input processInput2">
-                                <input type="text" placeholder="Treść" v-model="todo.probably[0]"/>
+                            <div class="ui input processInput2" style="max-width: 40% !important;">
+                                <input type="text" placeholder="Treść" v-model="todo.probablyContent"/>
                             </div>
                             <div class="ui input processInput2 time">
-                                <input type="text" placeholder="Czas" v-model="todo.probably[1]"/>
+                                <input type="text" placeholder="Czas" v-model="todo.probablyTime"/>
                             </div>
-                            <div class="ui input processInput2">
-                                <input type="text" placeholder="Materiały" v-model="todo.probably[2]"/>
+                            <div class="ui input processInput2" style="max-width: 30% !important;">
+                                <input type="text" placeholder="Materiały" v-model="todo.probablyMaterials"/>
                             </div>
                             <div class="ui buttons" id="todoBtn">
                                 <button class="ui yellow button" @click="todoAdd" tabindex="0">
                                     <i class="ui plus icon" style="margin: 0;"></i>
                                 </button>
-                                <button class="ui negative button" @click="todoCancel()" tabindex="0">
+                                <button class="ui negative button" @click="todoCancel" tabindex="0">
                                     <i class="ui plus icon cancelIcon" style="margin: 0;"></i>
                                 </button>
                             </div>
@@ -355,6 +358,9 @@ export default {
             },
             todo: {
                 probably: [],
+                probablyContent: "",
+                probablyTime: "",
+                probablyMaterials: "",
                 list: [],
             },
         };
@@ -572,29 +578,58 @@ export default {
                 break;
             }
         },
-        up(list, item){
-            var index = "";
-            switch(list){
-                case 0:
-                    index = this.people.list.indexOf(item);
-                    this.people.list.move(index, 1, index-1);
-                break;
-            }
+        up(item){
+            var index;
+
+            var lessRest;
+            var first;
+            var second;
+            var third;
+            var rest;
+
+            var index = this.todo.list.indexOf(item);
+
+            lessRest = this.todo.list.slice(0, index-1);
+            first = this.todo.list.slice(index-1, index);
+            second = this.todo.list.slice(index, index+1);
+            third = this.todo.list.slice(index+1, index+2);
+            rest = this.todo.list.slice(index+2);
+
+            if(index>0)
+                this.todo.list = [].concat(lessRest, second, first, third, rest);
+            else
+                this.todo.list = [].concat(second, first, third, rest);
         },
-        down(list, item){
-            var index = "";
-            switch(list){
-                case 0:
-                    index = this.people.list.indexOf(item);
-                    console.log(index-1);
-                    this.people.list.move(index, 1, index-1);
-                break;
-            }
+        down(item){
+            var index;
+            var max;
+
+            var lessRest;
+            var first;
+            var second;
+            var third;
+            var rest;
+
+            index = this.todo.list.indexOf(item);
+            max = this.todo.list.length - 1;
+
+            lessRest = this.todo.list.slice(0, index-1);
+            first = this.todo.list.slice(index-1, index);
+            second = this.todo.list.slice(index, index+1);
+            third = this.todo.list.slice(index+1, index+2);
+            rest = this.todo.list.slice(index+2);
+
+            if(index === max){}
+            else if(index > 0)
+                this.todo.list = [].concat(lessRest, first, third, second, rest);
+            else
+                this.todo.list = [].concat(third, second, rest);
+
         },
         todoAdd(){
-            var content = this.todo.probably[0];
-            var time = this.todo.probably[1];
-            var materials = this.todo.probably[2];
+            var content = this.todo.probablyContent;
+            var time = this.todo.probablyTime;
+            var materials = this.todo.probablyMaterials;
             var index = this.todo.list.length;
             index++;
 
@@ -605,19 +640,24 @@ export default {
                     content: content,
                     time: time,
                     materials: materials,
+
+                    edit: false,
+                    editContent: content,
+                    editTime: time,
+                    editMaterials: materials,
                 });
-                this.todo.probably[0] = "";
-                this.todo.probably[1] = "";
-                this.todo.probably[2] = "";
+                this.todo.probablyContent = "";
+                this.todo.probablyTime = "";
+                this.todo.probablyMaterials = "";
             }
         },
         todoIndex(item) {
             return this.todo.list.indexOf(item)+1;
         },
         todoCancel() {
-            this.todo.probably[0] = "";
-            this.todo.probably[1] = "";
-            this.todo.probably[2] = "";
+            this.todo.probablyContent = "";
+            this.todo.probablyTime = "";
+            this.todo.probablyMaterials = "";
         },
         todoDelete(item) {
             var index = this.todo.list.indexOf(item);
@@ -628,6 +668,11 @@ export default {
             more = this.todo.list.slice(index+1);
 
             this.todo.list = [].concat(less, more);
+        },
+        todoEdit(item) {
+            var index = this.todo.list.indexOf(item);
+
+            this.todo.list[index].edit = true;
         },
     },
     mounted() {

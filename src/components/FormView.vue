@@ -1,10 +1,10 @@
 <template>
     <div class="ui container" id="container">
-        <header class="ui header">
-            <FormHeader @back="$emit('back')"/>
-        </header>
+        <!--<header class="ui header">
+            <FormHeader @back="$emit('back')" @newK="newK()"/>
+        </header>-->
         <main class="ui main text container" >
-            <FormMain />
+            <FormMain @back="$emit('back')"/>
         </main>
     </div>
 </template>
@@ -18,6 +18,17 @@ export default {
     components: {
         FormHeader,
         FormMain,
+    },
+    data() {
+        return {
+            data: '',
+        }
+    },
+    methods: {
+        newK() {
+            this.data = 'Hei';
+            alert(this.data);
+        },
     },
 }
 </script>

@@ -33,20 +33,20 @@ KPT - TODO list:
 
 [x] Add v-models
 
-[/] Add handlers for inputs in form 3
+[x] Add handlers for inputs in form 3
     > [x] Add 'add' function
-    > [] Add 'edit' function
+    > [x] Add 'edit' function
     > [x] Add 'cancel' function
     > [x] Add 'delete' function
     > [x] Add 'up' function
     > [x] Add 'down' function
-[/] Add validation for form 3
+[x] Add validation for form 3
 
 **Front-end**
 
-[] Do main form relative
+[/] Do main form relative
     > [] Do main table thiner
-    > [] Do header thiner
+    > [x] Do header thiner
 [] Move styles from html to css(not for exceptions)
 
 ***Back-end***(Connected with API)
@@ -64,6 +64,8 @@ KPT - TODO list:
 
 ***Back-end***
 
-[] Do PDF-Project
+[x] Do example of fpdf
+
+[x] Do PDF-Project
+    [x] Do generating pdf
 [] Deploy
-[] Push on gh-paghes

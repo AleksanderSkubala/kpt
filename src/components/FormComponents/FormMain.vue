@@ -1,5 +1,23 @@
 <template>
 <div>
+    <nav class="ui fixed menu">
+        <div class="ui header item">
+            <div class="ui button" id="btnBack" @click="$emit('back')">
+                <i class="arrow left icon"></i>
+            </div>
+            <div id="mainTxt">
+                Tworzenie konspektu
+            </div>
+        </div>
+        <div class="ui right floated header item">
+            <div class="ui animated primary button" @click="$emit('newK')">
+                <div class="visible content">Zapisz</div>
+                <div class="hidden content">
+                    <i class="download icon"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
       <table class="ui celled center aligned table" id="mainTable">
         <thead>
             <tr>
@@ -223,7 +241,7 @@
                                 </td>
                                 <td>
                                     <div class="ui input processInput">
-                                        <input type="text" class="time" placeholder="Czas" v-model="todo.probablyTime"/>
+                                        <input type="text" placeholder="Czas" v-model="todo.probablyTime"/>
                                     </div>
                                 </td>
                                 <td>
@@ -233,11 +251,11 @@
                                 </td>
                                 <td>
                                     <div class="ui buttons" id="todoBtn">
-                                        <button class="ui yellow button">
-                                            <i class="ui plus icon" style="margin: 0;" @click="todoAdd" tabindex="0"></i>
+                                        <button class="ui yellow button" @click="todoAdd" tabindex="0">
+                                            <i class="ui plus icon" style="margin: 0;"></i>
                                         </button>
-                                        <button class="ui negative button">
-                                            <i class="ui plus icon cancelIcon" style="margin: 0;" @click="todoCancel" tabindex="0"></i>
+                                        <button class="ui negative button"  @click="todoCancel" tabindex="0">
+                                            <i class="ui plus icon cancelIcon" style="margin: 0;"></i>
                                         </button>
                                     </div>
                                 </td>
@@ -249,7 +267,7 @@
                             <div class="ui input processInput2" style="max-width: 40% !important;">
                                 <input type="text" placeholder="Treść" v-model="todo.probablyContent"/>
                             </div>
-                            <div class="ui input processInput2 time">
+                            <div class="ui input processInput2"  style="max-width: 20% !important;">
                                 <input type="text" placeholder="Czas" v-model="todo.probablyTime"/>
                             </div>
                             <div class="ui input processInput2" style="max-width: 30% !important;">
@@ -267,6 +285,32 @@
                     </div>
                 </td>
             </tr>
+            <transition name="fade">
+                <div id="overlay" v-if="todo.edit.isEditing">
+                    <div id="modal" class="ui card">
+                        <div id="todoInputs">
+                            <div class="ui input processInput2" style="width: 40% !important;">
+                                 <input type="text" placeholder="Treść" v-model="todo.edit.editContent"/>
+                             </div>
+                            <div class="ui input processInput2" style="max-width: 20% !important;">
+                                <input type="text" placeholder="Czas" v-model="todo.edit.editTime"/>
+                            </div>
+                            <div class="ui input processInput2" style="width: 40% !important;">
+                                <input type="text" placeholder="Materiały" v-model="todo.edit.editMaterials"/>
+                            </div>
+                            <br/>
+                            <div class="ui buttons" id="todoBtn">
+                                <button class="ui positive button" @click="todoEditConfirm" tabindex="0">
+                                    <i class="ui check icon" style="margin: 0;"></i>
+                                </button>
+                                <button class="ui negative button" @click="todoEditCancel" tabindex="0">
+                                    <i class="ui plus icon cancelIcon" style="margin: 0;"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </transition>
             <tr>
                 <td colspan="2">
                     <table class="ui striped table">
@@ -357,7 +401,13 @@ export default {
                 list: [],
             },
             todo: {
-                probably: [],
+                edit: {
+                    isEditing: false,
+                    editContent: "",
+                    editTime: "",
+                    editMaterials: "",
+                    index: '',
+                },
                 probablyContent: "",
                 probablyTime: "",
                 probablyMaterials: "",
@@ -640,11 +690,6 @@ export default {
                     content: content,
                     time: time,
                     materials: materials,
-
-                    edit: false,
-                    editContent: content,
-                    editTime: time,
-                    editMaterials: materials,
                 });
                 this.todo.probablyContent = "";
                 this.todo.probablyTime = "";
@@ -672,7 +717,32 @@ export default {
         todoEdit(item) {
             var index = this.todo.list.indexOf(item);
 
-            this.todo.list[index].edit = true;
+            this.todo.edit.isEditing = true;
+
+            this.todo.edit.index = index;
+            this.todo.edit.editContent = this.todo.list[index].content;
+            this.todo.edit.editTime = this.todo.list[index].time;
+            this.todo.edit.editMaterials = this.todo.list[index].materials;
+        },
+        todoEditConfirm() {
+            var index = this.todo.edit.index;
+
+            if(this.todo.edit.editContent && this.todo.edit.editTime) {
+                this.todo.list[index].content = this.todo.edit.editContent;
+                this.todo.list[index].time = this.todo.edit.editTime;
+            }
+
+            if(this.todo.edit.editMaterials)
+                this.todo.list[index].materials = this.todo.edit.editMaterials;
+
+            else {
+                this.todo.list[index].materials = '-';
+            }
+
+            this.todo.edit.isEditing = false;
+        },
+        todoEditCancel() {
+            this.todo.edit.isEditing = false;
         },
     },
     mounted() {
@@ -736,6 +806,18 @@ ul.ui.list li:before{
         justify-content: center;
     }
 
+    #modal {
+        width: 100% !important;
+        height: 60% !important;
+
+        left: 0% !important;
+        top: 20% !important;
+
+        .processInput{
+            clear: both !important;
+            width: 100% !important;
+        }
+    }
 }
 
 @media screen and (min-width: 576px) {
@@ -781,12 +863,80 @@ ul.ui.list li:before{
 }
 
 .time {
-    width: 20% !important;
+    max-width: 10% !important;
 }
 
 #todoBtn {
     clear: both;
     margin-top: 10px;
 }
+
+#overlay {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0, .60);
+
+    position: fixed;
+    z-index: 102;
+
+    top: 0;
+    left: 0;
+    right: auto;
+    bottom: auto;
+
+    #modal{
+        width: 50%;
+        height: 40%;
+
+        left: 25%;
+        top: 30%;
+        right: auto;
+        bottom: auto;
+
+        display: flex;
+        align-items: center;
+    }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+
+///HEADER///
+
+#btnBack{
+    background: none;
+    padding: 10px;
+
+    .icon{
+        margin: 0;
+    }
+}
+
+.ui .button{
+    .icon{
+        margin: 0;
+    }
+}
+
+#mainTxt{
+    margin-left: 20px;
+}
+
+@media only screen and (max-width: 575px){
+    .ui.right.floated.header.item::before{
+        display: none;
+        content: '';
+    }
+
+    #btnBack{
+        padding: 0;
+    }
+}
+
 
 </style>

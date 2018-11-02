@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="ui right floated header item">
-            <div class="ui animated primary button" @click="$emit('newK')">
+            <div class="ui animated primary button" @click="newK()">
                 <div class="visible content">Zapisz</div>
                 <div class="hidden content">
                     <i class="download icon"></i>
@@ -413,6 +413,8 @@ export default {
                 probablyMaterials: "",
                 list: [],
             },
+            /*apiUrl: 'http://aleksanderskubala.github.io/pdfApi/php/index.php?',*/
+            apiUrl: 'http://localhost/kptApi/php/index.php?',
         };
     },
     methods: {
@@ -743,6 +745,18 @@ export default {
         },
         todoEditCancel() {
             this.todo.edit.isEditing = false;
+        },
+        newK() {
+            var skeleton = '<div>Hej</div>';
+
+            var name = 'konspekt';
+            var down = 'download';
+
+            this.apiUrl += 'data='+skeleton+'&name='+name+'&down='+down;
+
+            alert(this.apiUrl);
+
+            window.location.href = this.apiUrl;
         },
     },
     mounted() {

@@ -1,5 +1,16 @@
 <template>
 <div>
+
+<!--TEMPLATE-->
+
+    <div id="konspekt">
+        <div id="container">
+            <h1 style="margin: 20px;">Zbiórka 'temat'</h1>
+        </div>
+    </div>
+
+<!--END OF TEMPLATE-->
+
     <nav class="ui fixed menu">
         <div class="ui header item">
             <div class="ui button" id="btnBack" @click="$emit('back')">
@@ -368,6 +379,8 @@
 </template>
 
 <script>
+import jsPDF from 'jspdf';
+
 export default {
     name: "FormMain",
     data(){
@@ -414,7 +427,7 @@ export default {
                 list: [],
             },
             /*apiUrl: 'http://aleksanderskubala.github.io/pdfApi/php/index.php?',*/
-            apiUrl: 'http://localhost/kptApi/php/index.php?',
+            apiUrl: 'http://localhost/kptApi/php/?',
         };
     },
     methods: {
@@ -747,16 +760,27 @@ export default {
             this.todo.edit.isEditing = false;
         },
         newK() {
-            var skeleton = '<div>Hej</div>';
 
-            var name = 'konspekt';
+            ///BY PHP///
+
+            /*var skeleton = '<style>#container{font-family: Segoe UI, sans-serif;font-size: 15px;width: 80%;display: flex;margin: auto;align-items: center;justify-content: center;}</style><div id="container"><h1 style="margin: 20px;">Zbiórka "temat"</h1></div>';
+
+            var name = 'konspekt'+this.when.content;
             var down = 'download';
 
-            this.apiUrl += 'data='+skeleton+'&name='+name+'&down='+down;
+            this.apiUrl += 'data='+skeleton;//+'&name='+name+'&down='+down;
 
             alert(this.apiUrl);
 
-            window.location.href = this.apiUrl;
+            window.location.href = this.apiUrl;*/
+
+            ///BY JSPDF///
+
+            var doc = new jsPDF();
+
+            doc.fromHTML(document.querySelector('#konspekt'), 20, 10);
+
+            doc.save('konspekt'+this.when.content);
         },
     },
     mounted() {
@@ -952,5 +976,21 @@ ul.ui.list li:before{
     }
 }
 
+#konspekt{
+
+    display: none;
+
+    #container{
+        font-family: 'Segoe UI', sans-serif;
+        font-size: 15px;
+
+        width: 80%;
+        display: flex;
+        margin: auto;
+
+        align-items: center;
+        justify-content: center;
+    }
+}
 
 </style>

@@ -2,7 +2,7 @@
     <div class="ui container" id="container">
         <!--<header class="ui header">
             <FormHeader @back="$emit('back')" @newK="newK()"/>
-        </header>-->
+        </header>--> <!--It's meged with FormMain-->
         <main class="ui main text container" >
             <FormMain @back="$emit('back')"/>
         </main>

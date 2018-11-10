@@ -5,7 +5,7 @@
 
     <div id="konspekt">
         <div id="container">
-            <h1 style="margin: 20px;">Zbiórka 'temat'</h1>
+            <h1 style="margin: 20px;">Zbiórka {{title.content}}</h1>
         </div>
     </div>
 
@@ -379,8 +379,6 @@
 </template>
 
 <script>
-import jsPDF from 'jspdf';
-
 export default {
     name: "FormMain",
     data(){
@@ -761,26 +759,17 @@ export default {
         },
         newK() {
 
-            ///BY PHP///
+            var el = document.querySelector('#konspekt');
+            var kptName = '';
 
-            /*var skeleton = '<style>#container{font-family: Segoe UI, sans-serif;font-size: 15px;width: 80%;display: flex;margin: auto;align-items: center;justify-content: center;}</style><div id="container"><h1 style="margin: 20px;">Zbiórka "temat"</h1></div>';
+            if(this.when.content){
+                kptName = 'konspekt('+this.when.content+').pdf';
+            } else{
+                kptName = 'konspekt.pdf';
+            }
 
-            var name = 'konspekt'+this.when.content;
-            var down = 'download';
+            doPDF(kptName);
 
-            this.apiUrl += 'data='+skeleton;//+'&name='+name+'&down='+down;
-
-            alert(this.apiUrl);
-
-            window.location.href = this.apiUrl;*/
-
-            ///BY JSPDF///
-
-            var doc = new jsPDF();
-
-            doc.fromHTML(document.querySelector('#konspekt'), 20, 10);
-
-            doc.save('konspekt'+this.when.content);
         },
     },
     mounted() {
@@ -978,7 +967,9 @@ ul.ui.list li:before{
 
 #konspekt{
 
-    display: none;
+    position: absolute;
+    left: 100vw;
+    width: 100vw;
 
     #container{
         font-family: 'Segoe UI', sans-serif;

@@ -50,22 +50,3 @@ KPT - TODO list:
 [] Move styles from html to css(not for exceptions)
 
 ***Back-end***(Connected with API)
-
-[] Do handler for 'Save' button
-[] Connect with KPT-API
-
-**Test**
-
-[] Check responsibility
-[] Check working
-
-
-###API###
-
-***Back-end***
-
-[x] Do example of fpdf
-
-[x] Do PDF-Project
-    [x] Do generating pdf
-[] Deploy

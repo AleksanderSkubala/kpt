@@ -768,7 +768,7 @@ export default {
                 kptName = 'konspekt.pdf';
             }
 
-            doPDF(kptName);
+            doPDF2(kptName);
 
         },
     },
@@ -968,14 +968,15 @@ ul.ui.list li:before{
 #konspekt{
 
     position: absolute;
-    left: 100vw;
-    width: 100vw;
+    left: 0;
+    display: none;
+    width: 794px;
 
     #container{
         font-family: 'Segoe UI', sans-serif;
         font-size: 15px;
 
-        width: 80%;
+        max-width: 80%;
         display: flex;
         margin: auto;
 

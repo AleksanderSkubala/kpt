@@ -1,28 +1,46 @@
 <style>
-#container{
-    font-family: 'Segoe UI', sans-serif;
-    font-size: 15px;
 
-    width: 80%;
-    display: flex;
-    margin: auto;
+    body{
+        width: 795px;
+        display: flex;
+    }
 
-    align-items: center;
-    justify-content: center;
-}
+    #container{
+        font-family: 'Segoe UI', sans-serif;
+        font-size: 15px;
+
+        width: 80%;
+        display: flex;
+        margin: auto;
+
+        justify-content: center;
+    }
+
+    #content{
+        width: 100%;
+    }
+
+    h1:first-child{
+        text-align: center;
+        margin: 40px;
+    }
+
+    #details{
+        float: left;
+    }
 </style>
 
-<!--<div id="container" style="
-    font-family: 'Segoe UI', sans-serif;
-    font-size: 15px;
-
-    width: 80%;
-    display: flex;
-    margin: auto;
-
-    align-items: center;
-    justify-content: center;"
->-->
 <div id="container">
-    <h1 style="margin: 20px;">Zbiórka 'temat'</h1>
+    <div id="content">
+        <h1>Zbiórka "temat"</h1>
+        <div id="details">
+            <p>Odpowiedzialny: *odpowiedzialny</p>
+            <p>Prowadzący: *prowadzący</p>
+            <p>Kiedy: *kiedy</p>
+            <p>Cele:</p>
+            <ul>
+                <li>*cele</li>
+            </ul>
+        </div>
+    </div>
 </div>

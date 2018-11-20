@@ -5,7 +5,138 @@
 
     <div id="konspekt">
         <div id="container">
-            <h1 style="margin: 20px;">Zbiórka {{title.content}}</h1>
+            <div id="content">
+                <h1>Zbiórka "{{title.content}}"</h1>
+                <div id="details">
+                    <p>Odpowiedzialny: {{main.content}}</p>
+                    <p>Prowadzący: *prowadzący</p>
+                    <p>Kiedy: {{when.content}}</p>
+                    <p>Cele:</p>
+                    <ul>
+                        <li>*cele</li>
+                    </ul>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -763,12 +894,12 @@ export default {
             var kptName = '';
 
             if(this.when.content){
-                kptName = 'konspekt('+this.when.content+').pdf';
+                kptName = 'konspekt('+this.when.content+')';
             } else{
-                kptName = 'konspekt.pdf';
+                kptName = 'konspekt';
             }
 
-            doPDF2(kptName);
+            downloadFILE('addHTML', kptName);
 
         },
     },
@@ -971,6 +1102,7 @@ ul.ui.list li:before{
     left: 0;
     display: none;
     width: 794px;
+    // transform: scale(4,4);
 
     #container{
         font-family: 'Segoe UI', sans-serif;
@@ -978,10 +1110,21 @@ ul.ui.list li:before{
 
         max-width: 80%;
         display: flex;
+        justify-content: center;
         margin: auto;
 
-        align-items: center;
-        justify-content: center;
+    }
+
+    #content{
+        width: 100%;
+    }
+
+    h1:first-child{
+        margin: 40px;
+    }
+
+    #details{
+        float: left;
     }
 }
 

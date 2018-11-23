@@ -9,132 +9,15 @@
                 <h1>Zbiórka "{{title.content}}"</h1>
                 <div id="details">
                     <p>Odpowiedzialny: {{main.content}}</p>
-                    <p>Prowadzący: *prowadzący</p>
+                    <p>Prowadzący:</p>
+                    <ol v-for="item in people.list" :key="item.name">
+                        <li>{{item.name}}</li>
+                    </ol>
                     <p>Kiedy: {{when.content}}</p>
                     <p>Cele:</p>
-                    <ul>
-                        <li>*cele</li>
-                    </ul>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
-                    <p>STRANGE TEXT sdfjdauefbajwnehshb</p>
+                    <ol v-for="item in goals.list" :key="item">
+                        <li>{{item.name}}</li>
+                    </ol>
                 </div>
             </div>
         </div>
@@ -899,7 +782,7 @@ export default {
                 kptName = 'konspekt';
             }
 
-            downloadFILE('addHTML', kptName);
+            downloadFILE('html2canvas', kptName);
 
         },
     },
@@ -1100,7 +983,7 @@ ul.ui.list li:before{
 
     position: absolute;
     left: 0;
-    display: none;
+    display: flex;
     width: 794px;
     // transform: scale(4,4);
 

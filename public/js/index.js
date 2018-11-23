@@ -10,30 +10,34 @@ function doPDF(kptName){
 
 }
 
-function doPDF2(kptName) {
+function doHTML(kptName) {
 
     document.querySelector('#konspekt').style.display = 'flex';
 
-	html2canvas(document.querySelector('#konspekt'),
-        {dpi: 300}
+    html2canvas(document.querySelector('#konspekt'),
+        {dpi: 300})
         .then(canvas => {
             var pdf = new jsPDF('p', 'mm', 'a4');
             var img = canvas.toDataURL('image/png');
 
-            var counter = (canvas.height / 934)*80;
-            // console.log(counter);
-            //80 is a counter that works for height 934
-            //we divide the canvas height by 934 and multiply it by 80
+            if(canvas.height < 74720){
 
-            // var counter = 74720 / canvas.height;
-            // console.log(counter);
-            //we divide height of pdf page by canvas height
+                var counter = (canvas.height / 934)*80;
+                // console.log(counter);
+                //80 is a counter that works for height 934
+                //we divide the canvas height by 934 and multiply it by 80
 
-			pdf.addImage(img, 'PNG', 0, 0, 0, counter);
-            pdf.save(kptName+'.pdf');
+                // var counter = 74720 / canvas.height;
+                // console.log(counter);
+                //we divide height of pdf page by canvas height
 
+                pdf.addImage(img, 'PNG', 0, 0, 0, counter);
+                pdf.save(kptName+'.pdf');
+            } else{
+                addPDF(kptName);
+            }
             document.querySelector('#konspekt').style.display = 'none';
-    }));
+    });
 }
 
 function addPDF(kptName){
@@ -87,7 +91,7 @@ function downloadFILE(request, name){
         break;
 
         case 'html2canvas':
-            doPDF2(name);
+            doHTML(name);
         break;
 
         case 'png':

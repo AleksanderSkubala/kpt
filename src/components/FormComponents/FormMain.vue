@@ -9,15 +9,43 @@
                 <h1>Zbiórka "{{title.content}}"</h1>
                 <div id="details">
                     <p>Odpowiedzialny: {{main.content}}</p>
-                    <p>Prowadzący:</p>
-                    <ol v-for="item in people.list" :key="item.name">
-                        <li>{{item.name}}</li>
-                    </ol>
                     <p>Kiedy: {{when.content}}</p>
-                    <p>Cele:</p>
-                    <ol v-for="item in goals.list" :key="item">
-                        <li>{{item.name}}</li>
-                    </ol>
+                    <div id="people">
+                        <p>Prowadzący:</p>
+                        <ol v-for="item in people.list" :key="item.name">
+                            <li>{{item.name}}</li>
+                        </ol>
+                    </div>
+                    <div id="goals">
+                        <p>Cele:</p>
+                        <ol v-for="item in goals.list" :key="item.name">
+                            <li>{{item.name}}</li>
+                        </ol>
+                    </div>
+                    <div id="added">
+                        <p>Załączniki:</p>
+                        <ol v-for="item in added.list" :key="item.name">
+                            <li>{{item.name}}</li>
+                        </ol>
+                    </div>
+                    <table id="todo" border="1">
+                        <thead>
+                            <tr>
+                                <th>Lp.</th>
+                                <th>Treść</th>
+                                <th>Czas</th>
+                                <th>Materiały</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="item in todo.list" :key="item.name">
+                                <th>{{todoIndex(item)}}. </th>
+                                <th>{{item.content}}</th>
+                                <th>{{item.time}}</th>
+                                <th>{{item.materials}}</th>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -782,7 +810,11 @@ export default {
                 kptName = 'konspekt';
             }
 
-            downloadFILE('html2canvas', kptName);
+            if(document.querySelector('#konspekt').style.offsetHeight < 1123){
+                downloadFILE('html2canvas', kptName);
+            }   else{
+                downloadFILE('addHTML', kptName);
+            }
 
         },
     },
@@ -981,11 +1013,10 @@ ul.ui.list li:before{
 
 #konspekt{
 
-    position: absolute;
-    left: 0;
-    display: flex;
+    position: fixed;
+    left: 100vw;
+    display: none;
     width: 794px;
-    // transform: scale(4,4);
 
     #container{
         font-family: 'Segoe UI', sans-serif;
@@ -1001,6 +1032,21 @@ ul.ui.list li:before{
     #content{
         width: 100%;
     }
+
+    /*#todo{
+        border: 1px solid rgba(0,0,0, .60);
+        border-collapse: collapse;
+        border-radius: 2%;
+        padding: 20px;
+
+        tbody{
+            font-weight: normal !important;
+        }
+
+        th{
+            border: 0 0 1px 1px;
+        }
+    }*/
 
     h1:first-child{
         margin: 40px;

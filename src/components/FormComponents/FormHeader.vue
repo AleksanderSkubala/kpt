@@ -10,9 +10,17 @@
         </div>
         <div class="ui right floated header item">
             <div class="ui animated primary button" @click="$emit('newK')">
-                <div class="visible content">Zapisz</div>
+                <!--<div class="visible content">Zapisz</div>
                 <div class="hidden content">
                     <i class="download icon"></i>
+                </div>-->
+
+                <div class="ui dropdown">
+                    <div class="text">Zapisz</div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+
+                    </div>
                 </div>
             </div>
         </div>

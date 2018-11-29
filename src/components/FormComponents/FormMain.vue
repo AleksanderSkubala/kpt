@@ -13,19 +13,19 @@
                     <div id="people">
                         <p>Prowadzący:</p>
                         <ol v-for="item in people.list" :key="item.name">
-                            <li>{{item.name}}</li>
+                            <li>{{indexList(item, 1)}}. {{item.name}}</li>
                         </ol>
                     </div>
                     <div id="goals">
                         <p>Cele:</p>
                         <ol v-for="item in goals.list" :key="item.name">
-                            <li>{{item.name}}</li>
+                            <li>{{indexList(item, 2)}}. {{item.name}}</li>
                         </ol>
                     </div>
                     <div id="added">
                         <p>Załączniki:</p>
                         <ol v-for="item in added.list" :key="item.name">
-                            <li>{{item.name}}</li>
+                            <li>{{indexList(item, 3)}}. {{item.name}}</li>
                         </ol>
                     </div>
                     <table id="todo" border="1">
@@ -63,14 +63,16 @@
             </div>
         </div>
         <div class="ui right floated header item">
-            <div class="ui animated primary button" @click="newK()">
-                <div class="visible content">Zapisz</div>
-                <div class="hidden content">
-                    <i class="download icon"></i>
+                <div class="ui animated primary button" @click="newK()" id="dropBtn">
+                    <div class="visible content">Zapisz</div>
+                    <div class="hidden content">
+                        <i class="download icon"></i>
+                    </div>
                 </div>
-            </div>
         </div>
-    </nav>
+    </nav><!--END OF HEADER-->
+
+
       <table class="ui celled center aligned table" id="mainTable">
         <thead>
             <tr>
@@ -817,6 +819,22 @@ export default {
             }
 
         },
+        indexList(item, list) {
+            switch(list){
+                case 1:
+                    return this.people.list.indexOf(item)+1;
+                break;
+
+                case 2:
+                    return this.goals.list.indexOf(item)+1;
+                break;
+
+                case 3:
+                    return this.added.list.indexOf(item)+1;
+                break;
+            }
+
+        }
     },
     mounted() {
         this.today = (new Date()).getDate();
@@ -981,6 +999,15 @@ ul.ui.list li:before{
 
 ///HEADER///
 
+#dropdown {
+    display: block;
+    position: fixed;
+}
+
+.show{
+    display: block;
+}
+
 #btnBack{
     background: none;
     padding: 10px;
@@ -1025,28 +1052,32 @@ ul.ui.list li:before{
         max-width: 80%;
         display: flex;
         justify-content: center;
+        align-items: center;
         margin: auto;
 
-    }
+        #content{
+            max-width: 100%;
 
-    #content{
-        width: 100%;
-    }
+            p{
+                padding-top: 5px;
+            }
 
-    /*#todo{
-        border: 1px solid rgba(0,0,0, .60);
-        border-collapse: collapse;
-        border-radius: 2%;
-        padding: 20px;
+            div{
+                margin-top: 5px;
+            }
 
-        tbody{
-            font-weight: normal !important;
+            h1{
+                display: flex;
+                justify-content: center;
+            }
+
+            #todo{
+                max-width: 100%;
+                justify-content: center;
+                margin-top: 20px;
+            }
         }
-
-        th{
-            border: 0 0 1px 1px;
-        }
-    }*/
+    }
 
     h1:first-child{
         margin: 40px;

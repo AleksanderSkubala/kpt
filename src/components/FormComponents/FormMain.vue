@@ -8,27 +8,28 @@
             <div id="content">
                 <h1>Zbiórka "{{title.content}}"</h1>
                 <div id="details">
-                    <p>Odpowiedzialny: {{main.content}}</p>
-                    <p>Kiedy: {{when.content}}</p>
+                    <p><b>Odpowiedzialny: </b>{{main.content}}</p>
+                    <p><b>Kiedy: </b>{{when.content}}</p>
                     <div id="people">
-                        <p>Prowadzący:</p>
+                        <p id="main">Prowadzący:</p>
                         <ol v-for="item in people.list" :key="item.name">
                             <li>{{indexList(item, 1)}}. {{item.name}}</li>
                         </ol>
                     </div>
                     <div id="goals">
-                        <p>Cele:</p>
+                        <p id="main">Cele:</p>
                         <ol v-for="item in goals.list" :key="item.name">
                             <li>{{indexList(item, 2)}}. {{item.name}}</li>
                         </ol>
                     </div>
                     <div id="added">
-                        <p>Załączniki:</p>
+                        <p id="main">Załączniki:</p>
                         <ol v-for="item in added.list" :key="item.name">
                             <li>{{indexList(item, 3)}}. {{item.name}}</li>
                         </ol>
                     </div>
-                    <table id="todo" border="1">
+                    <p id="main">Przebieg: </p>
+                    <table id="todo" border="1" class="ui table">
                         <thead>
                             <tr>
                                 <th>Lp.</th>
@@ -468,8 +469,7 @@ export default {
                 probablyMaterials: "",
                 list: [],
             },
-            /*apiUrl: 'http://aleksanderskubala.github.io/pdfApi/php/index.php?',*/
-            apiUrl: 'http://localhost/kptApi/php/?',
+            can: false,
         };
     },
     methods: {
@@ -803,6 +803,7 @@ export default {
         },
         newK() {
 
+            var can = true;
             var el = document.querySelector('#konspekt');
             var kptName = '';
 
@@ -810,12 +811,43 @@ export default {
                 kptName = 'konspekt('+this.when.content+')';
             } else{
                 kptName = 'konspekt';
+                can = false;
             }
 
-            if(document.querySelector('#konspekt').style.offsetHeight < 1123){
-                downloadFILE('html2canvas', kptName);
-            }   else{
-                downloadFILE('addHTML', kptName);
+            if(!this.title){
+                can = false;
+            }
+
+            if(!this.main){
+                can = false;
+            }
+
+            if(!this.people.list){
+                can = false;
+            }
+
+            if(!this.goals.list){
+                can = false;
+            }
+
+            if(!this.added.list){
+                can = false;
+            }
+
+            if(!this.todo.list){
+                can = false;
+            }
+
+            if(can){
+                if(document.querySelector('#konspekt').style.offsetHeight < 1123){
+                    downloadFILE('html2canvas', kptName);
+                }   else{
+                    downloadFILE('addHTML', kptName);
+                }
+            }else{
+                this.can = true;
+                console.log('App cannot do pdf file');
+                alert("Masz za mało danych");
             }
 
         },
@@ -1058,12 +1090,20 @@ ul.ui.list li:before{
         #content{
             max-width: 100%;
 
+            #main{
+                font-weight: bold;
+            }
+
             p{
-                padding-top: 5px;
+                padding-top: 2px;
+            }
+
+            ul{
+                padding: 1px;
             }
 
             div{
-                margin-top: 5px;
+                margin-top: 2px;
             }
 
             h1{
@@ -1072,9 +1112,9 @@ ul.ui.list li:before{
             }
 
             #todo{
-                max-width: 100%;
+                width: 100%;
                 justify-content: center;
-                margin-top: 20px;
+                margin-top: 10px;
             }
         }
     }

@@ -29,7 +29,7 @@
                         </ol>
                     </div>
                     <p id="main">Przebieg: </p>
-                    <table id="todo" border="1" class="ui table">
+                    <table id="todo" border="1">
                         <thead>
                             <tr>
                                 <th>Lp.</th>

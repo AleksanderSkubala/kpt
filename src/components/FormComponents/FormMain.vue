@@ -162,7 +162,7 @@
                                 <td style="width: 50%;">
                                     <ul class="ui divided list segments" style="margin: 0;">
                                         <li class="ui segment" style="padding: 10px;"><em>Prowadzący: </em></li>
-                                        <li v-for="item in people.list" class="ui segment" style="padding: 10px;">
+                                        <li v-for="item in people.list" :key="item.name" class="ui segment" style="padding: 10px;">
                                             <div v-if="item.edit === false">
                                                 <div class="itemName">{{item.name}}</div>
                                                 <div class="ui right floated button editBtn" style="padding-top: 0;" @click="deleteList(0, item)">
@@ -213,7 +213,7 @@
                                 <td style="width: 50%;">
                                     <ul class="ui divided list segments" style="margin: 0;">
                                         <li class="ui segment" style="padding: 10px;"><em>Harcerz po zbiórce będzie umiał: </em></li>
-                                        <li v-for="item in goals.list" class="ui segment" style="padding: 10px;">
+                                        <li v-for="item in goals.list" :key="item.name" class="ui segment" style="padding: 10px;">
                                             <div v-if="item.edit === false">
                                                 <div class="itemName">{{item.name}}</div>
                                                 <div class="ui right floated button editBtn" style="padding-top: 0;" @click="deleteList(1, item)">
@@ -253,7 +253,7 @@
             </tr>
             <tr style="background: none;">
                 <td colspan="2">
-                   <table class="ui striped table">
+                   <table class="ui striped table" id="todoTable">
                         <thead>
                             <tr>
                                 <th colspan="5">Przebieg:</th>
@@ -267,13 +267,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="item in todo.list">
+                            <tr v-for="item in todo.list" :key="item.name">
                                 <td>{{todoIndex(item)}} .</td>
                                 <td>{{item.content}}</td>
                                 <td class="time">{{item.time}}</td>
                                 <td>{{item.materials}}</td>
                                 <td>
-                                    <div style="float: right;">
+                                    <div id="operation">
                                                 <div class="ui button" style="padding: 0; background: none;"  @click="up(item)">
                                                     <i class="angle up icon" style="margin: 0; font-size: 20px;"></i>
                                                 </div>
@@ -380,7 +380,7 @@
                                 <td style="width: 50%;">
                                     <ul class="ui divided list segments" style="margin: 0;">
                                         <li class="ui segment" style="padding: 10px;"><em>Materiały dodatkowe: </em></li>
-                                        <li v-for="item in added.list" class="ui segment" style="padding: 10px;">
+                                        <li v-for="item in added.list" :key="item.name" class="ui segment" style="padding: 10px;">
                                             <div v-if="item.edit === false">
                                                 <div class="itemName">{{item.name}}</div>
                                                 <div class="ui right floated button editBtn" style="padding-top: 0;" @click="deleteList(2, item)">
@@ -915,7 +915,7 @@ ul.ui.list li:before{
         max-width:100%;
     }
 
-    #todoDiv {
+    #todoDiv{
         display: none;
     }
 
@@ -941,12 +941,49 @@ ul.ui.list li:before{
             width: 100% !important;
         }
     }
+
+    #todoTable {
+        tr {
+            display: flex !important;
+
+            td{
+                display: block !important;
+                min-width: 20% !important;
+                float: right;
+            }
+
+            td:first-child{
+                min-width: 10% !important;
+            }
+        }
+
+        #operation *{
+            clear: both;
+            display: block !important;
+            margin: 0.4em;
+        }
+
+        #todoRow{
+
+            display: table !important;
+            width: 100% !important;
+
+            td {
+                width: 100% !important;
+                clear: both;
+            }
+        }
+    }
 }
 
-@media screen and (min-width: 576px) {
-    #todoRow{
-        display: none !important;
+@media screen and (min-width: 576px){
+    #todoRow {
+        display: none;
     }
+}
+
+#operation *{
+    float: left;
 }
 
 .listS{

@@ -251,7 +251,7 @@
                     </table>
                 </td>
             </tr>
-            <tr style="background: none;">
+            <tr style="background: none;" class="mobile">
                 <td colspan="2">
                    <table class="ui striped table" id="todoTable">
                         <thead>
@@ -260,18 +260,22 @@
                             </tr>
                             <tr>
                                 <th>Lp.</th>
-                                <th>Treść</th>
-                                <th>Czas</th>
-                                <th>Materiały</th>
+                                <th>
+                                    <div>Treść</div>
+                                    <div>Czas</div>
+                                    <div>Materiały</div>
+                                </th>
                                 <th>Edycja</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="item in todo.list" :key="item.name">
                                 <td>{{todoIndex(item)}} .</td>
-                                <td>{{item.content}}</td>
-                                <td class="time">{{item.time}}</td>
-                                <td>{{item.materials}}</td>
+                                <td>
+                                    <div>{{item.content}}</div>
+                                    <div>{{item.time}}</div>
+                                    <div>{{item.materials}}</div>
+                                </td>
                                 <td>
                                     <div id="operation">
                                                 <div class="ui button" style="padding: 0; background: none;"  @click="up(item)">
@@ -318,6 +322,48 @@
                             </tr>
                         </tbody>
                     </table>
+                </td>
+            </tr><!-- MOBILE -->
+            <tr style="background: none;" class="pc">
+                <td colspan="2">
+                   <table class="ui striped table" id="todoTable">
+                        <thead>
+                            <tr>
+                                <th colspan="5">Przebieg:</th>
+                            </tr>
+                            <tr>
+                                <th>Lp.</th>
+                                <th>Treść</th>
+                                <th>Czas</th>
+                                <th>Materiały</th>
+                                <th>Edycja</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="item in todo.list" :key="item.name">
+                                <td>{{todoIndex(item)}} .</td>
+                                <td>{{item.content}}</td>
+                                <td>{{item.time}}</td>
+                                <td>{{item.materials}}</td>
+                                <td>
+                                    <div id="operation">
+                                                <div class="ui button" style="padding: 0; background: none;"  @click="up(item)">
+                                                    <i class="angle up icon" style="margin: 0; font-size: 20px;"></i>
+                                                </div>
+                                                <div class="ui button" style="padding: 0; background: none;" @click="down(item)">
+                                                    <i class="angle down icon" style="margin: 0; font-size: 20px;"></i>
+                                                </div>
+                                                <div class="ui button" style="padding: 0; background: none;" @click="todoDelete(item)">
+                                                    <i class="delete icon" style="margin: 0; font-size: 20px;"></i>
+                                                </div>
+                                                <div class="ui button" style="padding: 0; background: none;" @click="todoEdit(item)">
+                                                    <i class="ui edit outline icon editIcon" style="margin: 0; font-size: 20px;"></i>
+                                                </div>
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <div class="ui segment" id="todoDiv">
                         <div id="todoInputs">
                             <div class="ui input processInput2" style="max-width: 40% !important;">
@@ -340,18 +386,18 @@
                         </div>
                     </div>
                 </td>
-            </tr>
+            </tr><!-- PC -->
             <transition name="fade">
                 <div id="overlay" v-if="todo.edit.isEditing">
                     <div id="modal" class="ui card">
                         <div id="todoInputs">
-                            <div class="ui input processInput2" style="width: 40% !important;">
+                            <div class="ui input processInput2">
                                  <input type="text" placeholder="Treść" v-model="todo.edit.editContent"/>
                              </div>
-                            <div class="ui input processInput2" style="max-width: 20% !important;">
+                            <div class="ui input processInput2">
                                 <input type="text" placeholder="Czas" v-model="todo.edit.editTime"/>
                             </div>
-                            <div class="ui input processInput2" style="width: 40% !important;">
+                            <div class="ui input processInput2">
                                 <input type="text" placeholder="Materiały" v-model="todo.edit.editMaterials"/>
                             </div>
                             <br/>
@@ -910,7 +956,7 @@ ul.ui.list li:before{
     margin: auto;
 }
 
-@media only screen and (max-width: 575px){
+@media only screen and (max-width: 767px){
     table:first-child{
         max-width:100%;
     }
@@ -942,18 +988,54 @@ ul.ui.list li:before{
         }
     }
 
+    .pc{
+        display: none !important;
+    }
+
+    .mobile{
+        display: flex !important;
+    }
+
     #todoTable {
+        width: 100% !important;
+
+        thead tr{
+            display: flex;
+            width: 100%;
+
+            th{
+                width: 20% !important;
+            }
+
+            th:nth-child(2){
+                width: 50% !important;
+
+                div{
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+        }
+
         tr {
             display: flex !important;
+            width: 100%;
 
             td{
                 display: block !important;
-                min-width: 20% !important;
+                width: 20% !important;
                 float: right;
             }
 
-            td:first-child{
-                min-width: 10% !important;
+            td:nth-child(2){
+                width: 50% !important;
+
+                div {
+                    display: flex;
+                    justify-content: center;
+                    text-align: center;
+                    margin: 4px;
+                }
             }
         }
 
@@ -974,10 +1056,40 @@ ul.ui.list li:before{
             }
         }
     }
+
+    #overlay #modal{
+        width: 90vw !important;
+        height: 90vh !important;
+
+        top: 5vh !important;
+        left: 5vw !important;
+
+        #todoInputs {
+            width: 90% !important;
+        }
+
+        #todoInputs .ui.input {
+            display: table !important;
+            width: 100% !important;
+            clear: both;
+
+            input {
+                width: 100%;
+            }
+        }
+    }
 }
 
-@media screen and (min-width: 576px){
+@media screen and (min-width:768px){
     #todoRow {
+        display: none;
+    }
+
+    .pc{
+        display: table-row;
+    }
+
+    .mobile{
         display: none;
     }
 }
@@ -1045,16 +1157,27 @@ ul.ui.list li:before{
     bottom: auto;
 
     #modal{
-        width: 50%;
+        width: 60%;
         height: 40%;
 
-        left: 25%;
+        left: 20%;
         top: 30%;
         right: auto;
         bottom: auto;
 
-        display: flex;
-        align-items: center;
+        #todoInputs {
+            width: 90% !important;
+        }
+
+        #todoInputs .ui.input {
+            display: table !important;
+            width: 100% !important;
+            clear: both;
+
+            input {
+                width: 60%;
+            }
+        }
     }
 }
 

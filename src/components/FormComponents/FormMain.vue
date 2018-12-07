@@ -17,37 +17,37 @@
                         </ol>
                     </div>
                     <div id="goals">
-                        <p id="main">Cele:</p>
+                        <p id="main">Cele(osoba po zbiórce powinna umieć) :</p>
                         <ol v-for="item in goals.list" :key="item.name">
                             <li>{{indexList(item, 2)}}. {{item.name}}</li>
                         </ol>
                     </div>
-                    <div id="added">
+                    <div id="added" v-if="added.list === true">
                         <p id="main">Załączniki:</p>
                         <ol v-for="item in added.list" :key="item.name">
                             <li>{{indexList(item, 3)}}. {{item.name}}</li>
                         </ol>
                     </div>
                     <p id="main">Przebieg: </p>
-                    <table id="todo" border="1">
-                        <thead>
-                            <tr>
-                                <th>Lp.</th>
-                                <th>Treść</th>
-                                <th>Czas</th>
-                                <th>Materiały</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="item in todo.list" :key="item.name">
-                                <th>{{todoIndex(item)}}. </th>
-                                <th>{{item.content}}</th>
-                                <th>{{item.time}}</th>
-                                <th>{{item.materials}}</th>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
+                <table id="todo" border="1">
+                    <thead>
+                        <tr>
+                            <th>Lp.</th>
+                            <th>Treść</th>
+                            <th>Czas</th>
+                            <th>Materiały</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in todo.list" :key="item.name">
+                            <th>{{todoIndex(item)}}. </th>
+                            <th>{{item.content}}</th>
+                            <th>{{item.time}}</th>
+                            <th>{{item.materials}}</th>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -251,9 +251,10 @@
                     </table>
                 </td>
             </tr>
-            <tr style="background: none;" class="mobile">
+            <tr style="background: none;">
                 <td colspan="2">
-                   <table class="ui striped table" id="todoTable">
+                   <!-- MOBILE -->
+                   <table class="ui striped table mobile" id="todoTable">
                         <thead>
                             <tr>
                                 <th colspan="5">Przebieg:</th>
@@ -322,11 +323,9 @@
                             </tr>
                         </tbody>
                     </table>
-                </td>
-            </tr><!-- MOBILE -->
-            <tr style="background: none;" class="pc">
-                <td colspan="2">
-                   <table class="ui striped table" id="todoTable">
+
+                    <!--PC-->
+                    <table class="ui striped table pc" id="todoTable">
                         <thead>
                             <tr>
                                 <th colspan="5">Przebieg:</th>
@@ -364,7 +363,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div class="ui segment" id="todoDiv">
+                    <div class="ui segment pc" id="todoDiv">
                         <div id="todoInputs">
                             <div class="ui input processInput2" style="max-width: 40% !important;">
                                 <input type="text" placeholder="Treść" v-model="todo.probablyContent"/>
@@ -385,8 +384,10 @@
                             </div>
                         </div>
                     </div>
+
+
                 </td>
-            </tr><!-- PC -->
+            </tr>
             <transition name="fade">
                 <div id="overlay" v-if="todo.edit.isEditing">
                     <div id="modal" class="ui card">
@@ -957,9 +958,6 @@ ul.ui.list li:before{
 }
 
 @media only screen and (max-width: 767px){
-    table:first-child{
-        max-width:100%;
-    }
 
     #todoDiv{
         display: none;
@@ -994,6 +992,10 @@ ul.ui.list li:before{
 
     .mobile{
         display: flex !important;
+    }
+
+    #todoTable:first-child{
+        display: table !important;
     }
 
     #todoTable {
@@ -1058,15 +1060,15 @@ ul.ui.list li:before{
     }
 
     #overlay #modal{
-        width: 90vw !important;
-        height: 90vh !important;
+        width: 95vw !important;
+        height: 95vh !important;
 
-        top: 5vh !important;
-        left: 5vw !important;
+        top: 2.5vh !important;
+        left: 2.5vw !important;
 
-        #todoInputs {
-            width: 90% !important;
-        }
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         #todoInputs .ui.input {
             display: table !important;
@@ -1074,7 +1076,7 @@ ul.ui.list li:before{
             clear: both;
 
             input {
-                width: 100%;
+                width: 100% !important;
             }
         }
     }
@@ -1086,7 +1088,7 @@ ul.ui.list li:before{
     }
 
     .pc{
-        display: table-row;
+        display: table;
     }
 
     .mobile{
@@ -1241,14 +1243,19 @@ ul.ui.list li:before{
         font-family: 'Segoe UI', sans-serif;
         font-size: 15px;
 
-        max-width: 80%;
+        width: 65%;
         display: flex;
         justify-content: center;
         align-items: center;
         margin: auto;
 
         #content{
-            max-width: 100%;
+            width: 100%;
+
+            #details{
+                margin-bottom: 20px;
+                float: left;
+            }
 
             #main{
                 font-weight: bold;
@@ -1270,21 +1277,24 @@ ul.ui.list li:before{
                 display: flex;
                 justify-content: center;
             }
+        }
 
-            #todo{
-                width: 100%;
-                justify-content: center;
-                margin-top: 10px;
+        #todo{
+            width: 100%;
+            justify-content: center;
+
+            border-collapse: collapse;
+            border: 1px solid black;
+
+            th, td{
+                border: 1px solid black;
+                padding: 3px;
             }
         }
     }
 
     h1:first-child{
         margin: 40px;
-    }
-
-    #details{
-        float: left;
     }
 }
 

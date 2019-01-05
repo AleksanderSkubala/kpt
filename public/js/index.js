@@ -1,7 +1,3 @@
-function dropdown(){
-    document.querySelector('#dropdown').classList.toggle('show');
-}
-
 function doPDF(kptName){
 
     document.querySelector('#konspekt').style.display = 'flex';

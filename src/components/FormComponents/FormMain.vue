@@ -22,7 +22,7 @@
                             <li>{{indexList(item, 2)}}. {{item.name}}</li>
                         </ol>
                     </div>
-                    <div id="added" v-if="added.list === true">
+                    <div id="added" v-if="added.list.length > 0">
                         <p id="main">Załączniki:</p>
                         <ol v-for="item in added.list" :key="item.name">
                             <li>{{indexList(item, 3)}}. {{item.name}}</li>
@@ -502,6 +502,7 @@ export default {
             added: {
                 probably: "",
                 list: [],
+                show: true,
             },
             todo: {
                 edit: {
@@ -869,30 +870,32 @@ export default {
                 can = false;
             }
 
-            if(!this.people.list){
+            if(this.people.list.length > 0){
+                can = true;
+            } else {
                 can = false;
             }
 
-            if(!this.goals.list){
+            if(this.goals.list.length > 0){
+                can = true;
+            } else {
                 can = false;
             }
 
-            if(!this.added.list){
+            if(this.todo.list.length > 0){
+                can = true;
+            } else {
                 can = false;
             }
 
-            if(!this.todo.list){
-                can = false;
-            }
-
-            if(can){
+            if(can === true){
                 if(document.querySelector('#konspekt').style.offsetHeight < 1123){
                     downloadFILE('html2canvas', kptName);
                 }   else{
                     downloadFILE('addHTML', kptName);
                 }
             }else{
-                this.can = true;
+                can = true;
                 console.log('App cannot do pdf file');
                 alert("Masz za mało danych");
             }
@@ -1288,7 +1291,11 @@ ul.ui.list li:before{
 
             th, td{
                 border: 1px solid black;
-                padding: 3px;
+                padding: 4px;
+            }
+
+            tr:last-child(){
+                border-bottom: 1px solid black;
             }
         }
     }

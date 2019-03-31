@@ -4,7 +4,9 @@
             :title="item.title"
             :description="item.main"
             :date="item.date"
-            :item="item"
+            :res="JSON.stringify(item)"
+
+            @createFrom="createFrom"
         />
     </ul>
 </template>
@@ -22,8 +24,13 @@ export default {
             list: [],
         };
     },
+    methods: {
+        createFrom(e) {
+            this.$emit('createFrom', e)
+        }
+    },
     mounted() {
-        this.list = read(5);
+        this.list = read(10);
     },
 }
 </script>

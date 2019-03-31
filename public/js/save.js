@@ -7,8 +7,8 @@ const save = function (data){
         save();
     } else if(data) {
         get = JSON.parse(get);
-        console.log(get.konspekty);
         get.konspekty.unshift(data);
+        get.konspekty.slice(0, 9);
         get = JSON.stringify(get);
         window.localStorage.setItem('konspekty', get);
     } else {
@@ -21,7 +21,7 @@ const read = function (elNum){
     get = JSON.parse(get);
     if(get) {
         var data = get.konspekty;
-        var list = data.length > elNum ? data.slice(elNum+1) : data;
+        var list = data.length > elNum ? data.slice(elNum) : data;
         return list;
     } else {
         window.localStorage.setItem('konspekty', JSON.stringify({konspekty: []}));

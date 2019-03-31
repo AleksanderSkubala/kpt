@@ -1,5 +1,5 @@
 <template>
-    <li class="item">
+    <li class="item" @click="$emit('createFrom', res)">
         <!-- <img :src="url" class="ui mini avatar image" /> -->
         <div class="content" style='float: left;'>
             <h4 class="header">{{this.title}}</h4>
@@ -15,10 +15,6 @@
 export default {
     name: "ListItem",
     props: {
-        img: {
-            type: String,
-            required: false,
-        },
         title: {
             type: String,
             required: false,
@@ -28,6 +24,10 @@ export default {
             required: false,
         },
         date: {
+            type: String,
+            required: false,
+        },
+        res: {
             type: String,
             required: false,
         },

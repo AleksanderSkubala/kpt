@@ -4,12 +4,12 @@
     <div class="ui container" v-if="step === 0">
       <AppHeader @newK="newK"/>
       <main class="ui main text container">
-        <List />
+        <List  @createFrom="createFrom"/>
       </main>
     </div>
   </transition>
   <transition name="slider">
-    <FormView v-if="step === 1" @back="back"/>
+    <FormView v-if="step === 1" @back="back" :konspektData="konspektData"/>
   </transition>
 </div>
 </template>
@@ -30,6 +30,7 @@ export default {
     return {
       step: 0,
       loading: false,
+      konspektData: '',
     };
   },
   methods: {
@@ -38,7 +39,11 @@ export default {
     },
     back() {
       this.step = 0;
-    }
+    },
+    createFrom(item) {
+      this.konspektData = item;
+      this.step = 1;
+    },
   },
 };
 </script>
@@ -46,13 +51,7 @@ export default {
 <style lang="scss">
 
 .main.container {
-    margin-top: 5em;
-}
-
-@media only screen and (max-width: 767px){
-  .main.container{
-    // margin-left: 0;
-  }
+    margin-top: 5em !important;
 }
 
 .slider-enter-active, .slider-leave-active {

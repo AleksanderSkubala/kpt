@@ -520,6 +520,12 @@ export default {
             can: false,
         };
     },
+    props: {
+        konspektData: {
+            type: String,
+            required: false,
+        },
+    },
     methods: {
         check(what){
             switch (what) {
@@ -902,6 +908,7 @@ export default {
                     people: this.people.list,
                     goals: this.goals.list,
                     todo: this.todo.list,
+                    added: this.added.list,
                 };
                 save(el);
             }else{
@@ -926,10 +933,22 @@ export default {
                 break;
             }
 
-        }
+        },
     },
     mounted() {
         this.today = (new Date()).getDate();
+
+        if(this.konspektData) {
+            var data = JSON.parse(this.konspektData);
+
+            this.title.probably = data.title;
+            this.when.probably = data.date;
+            this.main.probably = data.main;
+            this.people.list = data.people;
+            this.goals.list = data.goals;
+            this.todo.list = data.todo;
+            this.added.list = data.added;
+        }
     },
 }
 </script>

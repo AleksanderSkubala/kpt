@@ -4,7 +4,7 @@
             <FormHeader @back="$emit('back')" @newK="newK()"/>
         </header>--> <!--It's meged with FormMain-->
         <main class="ui main text container" >
-            <FormMain @back="$emit('back')"/>
+            <FormMain @back="$emit('back')" :konspektData="konspektData"/>
         </main>
     </div>
 </template>
@@ -21,6 +21,12 @@ export default {
         return {
             data: '',
         }
+    },
+    props: {
+        konspektData: {
+            type: String,
+            required: false,
+        },
     },
     methods: {
         newK() {

@@ -1,34 +1,10 @@
 <template>
     <ul class="ui divided list selection">
-        <ListItem
-            img="1"
-            title="Lena"
-            description="JavaScript dev"
-            date="2016-10-16"
-        />
-        <ListItem
-            img="2"
-            title="Rick"
-            description="Seo"
-            date= "2016-10-16"
-        />
-        <ListItem
-            img="3"
-            title="Morty"
-            description="Front-End dev"
-            date= "2016-10-16"
-        />
-        <ListItem
-            img="4"
-            title="Adelle"
-            description="Back-End dev"
-            date= "2016-10-16"
-        />
-        <ListItem
-            img="5"
-            title="Charlie"
-            description="Designer"
-            date= "2016-10-16"
+        <ListItem v-for="item in list" :key="item.title"
+            :title="item.title"
+            :description="item.main"
+            :date="item.date"
+            :item="item"
         />
     </ul>
 </template>
@@ -41,6 +17,14 @@ export default {
     components: {
         ListItem,
     },
+    data() {
+        return {
+            list: [],
+        };
+    },
+    mounted() {
+        this.list = read(5);
+    },
 }
 </script>
 
@@ -49,6 +33,13 @@ export default {
 ul.ui.list li:before {
   display: none;
   content: '';
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 </style>

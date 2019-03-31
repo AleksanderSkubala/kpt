@@ -10,13 +10,11 @@
 </template>
 
 <script>
-import FormHeader from '@/components/FormComponents/FormHeader.vue';
 import FormMain from '@/components/FormComponents/FormMain.vue';
 
 export default {
     name: "FormView",
     components: {
-        FormHeader,
         FormMain,
     },
     data() {

@@ -1,11 +1,11 @@
 <template>
     <li class="item">
-        <img :src="url" class="ui mini avatar image" />
-        <div class="content">
+        <!-- <img :src="url" class="ui mini avatar image" /> -->
+        <div class="content" style='float: left;'>
             <h4 class="header">{{this.title}}</h4>
             <div class="description">{{this.description}}</div>
         </div>
-        <div class="content" style="float: right;">
+        <div class="content" style='float: right;'>
             <div class="description">{{this.date}}</div>
         </div>
     </li>
@@ -17,11 +17,11 @@ export default {
     props: {
         img: {
             type: String,
-            required: true,
+            required: false,
         },
         title: {
             type: String,
-            required: true,
+            required: false,
         },
         description: {
             type: String,
@@ -44,5 +44,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.item {
+    width: 75%;
+}
 
 </style>

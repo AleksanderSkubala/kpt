@@ -894,6 +894,16 @@ export default {
                 }   else{
                     downloadFILE('addHTML', kptName);
                 }
+
+                var el = {
+                    title: this.title.content,
+                    date: this.when.content,
+                    main: this.main.content,
+                    people: this.people.list,
+                    goals: this.goals.list,
+                    todo: this.todo.list,
+                };
+                save(el);
             }else{
                 can = true;
                 console.log('App cannot do pdf file');

@@ -7,6 +7,9 @@ const save = function (data){
         save();
     } else if(data) {
         get = JSON.parse(get);
+        get.filter((value)=>{
+            return value.title != data.title;
+        });
         get.konspekty.unshift(data);
         get.konspekty.slice(0, 9);
         get = JSON.stringify(get);

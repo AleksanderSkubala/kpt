@@ -1,6 +1,6 @@
 const save = function (data){
+    window.localStorage.clear();
     var get = window.localStorage.getItem('konspekty');
-    //window.localStorage.clear();
 
     if(!get) {
         window.localStorage.setItem('konspekty', JSON.stringify({konspekty: []}));

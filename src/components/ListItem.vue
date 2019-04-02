@@ -31,6 +31,10 @@ export default {
             type: String,
             required: false,
         },
+        id: {
+            type: Number,
+            required: false,
+        },
     },
     data() {
         return{
@@ -38,7 +42,8 @@ export default {
         };
     },
     mounted() {
-        this.url = `https://api.adorable.io/avatars/55/typeofweb${this.img}.png`
+        this.url = `https://api.adorable.io/avatars/55/typeofweb${this.img}.png`;
+        this.res.id = this.id;
     },
 }
 </script>

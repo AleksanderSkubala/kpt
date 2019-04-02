@@ -8,9 +8,12 @@ const save = function (data){
     } else if(data) {
         get = JSON.parse(get);
         console.log(data.title);
-        /*get.konspekty.filter((value)=>{
-            return value.title != data.title;
-        });*/
+        
+        var index = data.index;
+        var first = get.konspekty.slice(0,index);
+        var second = get.konspekty.slice(index+1);
+        get.konspekty = first.concat(second);
+        
         get.konspekty.unshift(data);
         get.konspekty.slice(0, 9);
         get = JSON.stringify(get);

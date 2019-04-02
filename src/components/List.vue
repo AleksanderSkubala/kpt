@@ -4,6 +4,7 @@
             :title="item.title"
             :description="item.main"
             :date="item.date"
+            :id="list.indexOf(item)"
             :res="JSON.stringify(item)"
 
             @createFrom="createFrom"

@@ -1,6 +1,6 @@
 const save = function (data){
     var get = window.localStorage.getItem('konspekty');
-    window.localStorage.clear();
+    //window.localStorage.clear();
 
     if(!get) {
         window.localStorage.setItem('konspekty', JSON.stringify({konspekty: []}));
@@ -8,9 +8,9 @@ const save = function (data){
     } else if(data) {
         get = JSON.parse(get);
         console.log(data.title);
-        get.konspekty.filter((value)=>{
+        /*get.konspekty.filter((value)=>{
             return value.title != data.title;
-        });
+        });*/
         get.konspekty.unshift(data);
         get.konspekty.slice(0, 9);
         get = JSON.stringify(get);

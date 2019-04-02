@@ -7,7 +7,7 @@ const save = function (data){
         save();
     } else if(data) {
         get = JSON.parse(get);
-        get.filter((value)=>{
+        get.konspekty.filter((value)=>{
             return value.title != data.title;
         });
         get.konspekty.unshift(data);

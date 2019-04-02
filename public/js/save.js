@@ -7,6 +7,7 @@ const save = function (data){
         save();
     } else if(data) {
         get = JSON.parse(get);
+        console.log(data.title);
         get.konspekty.filter((value)=>{
             return value.title != data.title;
         });

@@ -1,10 +1,9 @@
 <template>
     <ul class="ui divided list selection">
-        <ListItem v-for="item in list" :key="item.title"
+        <ListItem v-for="item in list" :key="list.indexOf(item)"
             :title="item.title"
             :description="item.main"
             :date="item.date"
-            :id="list.indexOf(item)"
             :res="JSON.stringify(item)"
 
             @createFrom="createFrom"

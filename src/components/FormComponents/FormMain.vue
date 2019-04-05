@@ -910,10 +910,13 @@ export default {
                     todo: this.todo.list,
                     added: this.added.list,
                 };
-                save(el);
+
+                var oldData = this.konspektData ? JSON.parse(this.konspektData) :
+                console.table(oldData);
+                save(el, oldData);
             }else{
                 can = true;
-                console.log('App cannot do pdf file');
+                console.error("App cant' do pdf file.");
                 alert("Masz za mało danych");
             }
 
@@ -941,9 +944,15 @@ export default {
         if(this.konspektData) {
             var data = JSON.parse(this.konspektData);
 
-            this.title.probably = data.title;
-            this.when.probably = data.date;
-            this.main.probably = data.main;
+            this.title.content = data.title;
+            this.title.edit = false;
+
+            this.when.content = data.date;
+            this.when.edit = false;
+
+            this.main.content = data.main;
+            this.main.edit = false;
+
             this.people.list = data.people;
             this.goals.list = data.goals;
             this.todo.list = data.todo;

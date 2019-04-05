@@ -1,25 +1,35 @@
-const save = function (data){
-    window.localStorage.clear();
+const save = function (data, oldData){
     var get = window.localStorage.getItem('konspekty');
 
     if(!get) {
         window.localStorage.setItem('konspekty', JSON.stringify({konspekty: []}));
         save();
-    } else if(data) {
+    } else if(oldData && data) {
         get = JSON.parse(get);
-        console.log(data.title);
-        
-        var index = data.index;
+        var index = get.indexOf(oldData);
+
+        console.log(data);
+        console.log(get);
+
         var first = get.konspekty.slice(0,index);
         var second = get.konspekty.slice(index+1);
         get.konspekty = first.concat(second);
-        
+
         get.konspekty.unshift(data);
         get.konspekty.slice(0, 9);
         get = JSON.stringify(get);
         window.localStorage.setItem('konspekty', get);
+    } else if( !oldData && data ) {
+        get = JSON.parse(get);
+
+        console.log(data);
+        console.log(get);
+
+        get.konspekty.unshift(data);
+        get = JSON.stringify(get);
+        window.localStorage.setItem('konspekty', get);
     } else {
-        console.error('You have to push data!!!');
+        console.error('You have to push any data!!!');
     }
 };
 

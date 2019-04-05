@@ -6,24 +6,16 @@ const save = function (data, oldData){
         save();
     } else if(oldData && data) {
         get = JSON.parse(get);
-        var index = get.indexOf(oldData);
+        var index = get.konspekty.indexOf(oldData);
 
-        console.log(data);
-        console.log(get);
-
-        var first = get.konspekty.slice(0,index);
-        var second = get.konspekty.slice(index+1);
-        get.konspekty = first.concat(second);
-
+        get.konspekty.splice(index, 1);
         get.konspekty.unshift(data);
+
         get.konspekty.slice(0, 9);
         get = JSON.stringify(get);
         window.localStorage.setItem('konspekty', get);
     } else if( !oldData && data ) {
         get = JSON.parse(get);
-
-        console.log(data);
-        console.log(get);
 
         get.konspekty.unshift(data);
         get = JSON.stringify(get);

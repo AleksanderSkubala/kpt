@@ -35,6 +35,7 @@ export default {
   },
   methods: {
     newK() {
+      this.konspektData = {};
       this.step = 1;
     },
     back() {

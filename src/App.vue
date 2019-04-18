@@ -39,7 +39,8 @@ export default {
       this.step = 1;
     },
     back() {
-      this.step = 0;
+      // this.step = 0;
+      location.href = location.href;
     },
     createFrom(item) {
       this.konspektData = item;

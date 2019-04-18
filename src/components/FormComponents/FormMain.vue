@@ -50,6 +50,10 @@
                 </table>
             </div>
         </div>
+        <p id="footer">
+            Konspekt wygenerowany w Generatorze Konspektów: <br/>
+            <a href="https://aleksanderskubala.github.io/kpt">https://aleksanderskubala.github.io/kpt</a>
+        </p>
     </div>
 
 <!--END OF TEMPLATE-->
@@ -279,19 +283,19 @@
                                 </td>
                                 <td>
                                     <div id="operation">
-                                                <div class="ui button" style="padding: 0; background: none;"  @click="up(item)">
-                                                    <i class="angle up icon" style="margin: 0; font-size: 20px;"></i>
-                                                </div>
-                                                <div class="ui button" style="padding: 0; background: none;" @click="down(item)">
-                                                    <i class="angle down icon" style="margin: 0; font-size: 20px;"></i>
-                                                </div>
-                                                <div class="ui button" style="padding: 0; background: none;" @click="todoDelete(item)">
-                                                    <i class="delete icon" style="margin: 0; font-size: 20px;"></i>
-                                                </div>
-                                                <div class="ui button" style="padding: 0; background: none;" @click="todoEdit(item)">
-                                                    <i class="ui edit outline icon editIcon" style="margin: 0; font-size: 20px;"></i>
-                                                </div>
+                                        <div class="ui button"  @click="up(item)">
+                                            <i class="angle up icon"></i>
                                         </div>
+                                        <div class="ui button" @click="down(item)">
+                                            <i class="angle down icon"></i>
+                                        </div>
+                                        <div class="ui button" @click="todoDelete(item)">
+                                            <i class="delete icon"></i>
+                                        </div>
+                                        <div class="ui button" @click="todoEdit(item)">
+                                            <i class="ui edit outline icon editIcon"></i>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                             <tr id="todoRow">
@@ -324,7 +328,7 @@
                         </tbody>
                     </table>
 
-                    <!--PC-->
+                    <!--DESKTOP-->
                     <table class="ui striped table pc" id="todoTable">
                         <thead>
                             <tr>
@@ -346,19 +350,19 @@
                                 <td>{{item.materials}}</td>
                                 <td>
                                     <div id="operation">
-                                                <div class="ui button" style="padding: 0; background: none;"  @click="up(item)">
-                                                    <i class="angle up icon" style="margin: 0; font-size: 20px;"></i>
-                                                </div>
-                                                <div class="ui button" style="padding: 0; background: none;" @click="down(item)">
-                                                    <i class="angle down icon" style="margin: 0; font-size: 20px;"></i>
-                                                </div>
-                                                <div class="ui button" style="padding: 0; background: none;" @click="todoDelete(item)">
-                                                    <i class="delete icon" style="margin: 0; font-size: 20px;"></i>
-                                                </div>
-                                                <div class="ui button" style="padding: 0; background: none;" @click="todoEdit(item)">
-                                                    <i class="ui edit outline icon editIcon" style="margin: 0; font-size: 20px;"></i>
-                                                </div>
+                                        <div class="ui button" @click="up(item)">
+                                            <i class="angle up icon"></i>
                                         </div>
+                                        <div class="ui button" @click="down(item)">
+                                            <i class="angle down icon"></i>
+                                        </div>
+                                        <div class="ui button" @click="todoDelete(item)">
+                                            <i class="delete icon"></i>
+                                        </div>
+                                        <div class="ui button" @click="todoEdit(item)">
+                                            <i class="ui edit outline icon editIcon"></i>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -901,7 +905,7 @@ export default {
                     downloadFILE('addHTML', kptName);
                 }
 
-                var el = {
+                var elData = {
                     title: this.title.content,
                     date: this.when.content,
                     main: this.main.content,
@@ -913,7 +917,7 @@ export default {
 
                 var oldData = this.konspektData ? JSON.parse(this.konspektData) :
                 console.table(oldData);
-                save(el, oldData);
+                save(elData, oldData);
             }else{
                 can = true;
                 console.error("App cant' do pdf file.");
@@ -967,11 +971,6 @@ export default {
 ul.ui.list li:before{
     content: '';
     display: none;
-}
-
-#mainTable {
-    width: 100%;
-    // border-color: rgba(34,36,38,.30);
 }
 
 .editBtn {
@@ -1040,7 +1039,8 @@ ul.ui.list li:before{
     }
 
     #todoTable {
-        width: 100% !important;
+        max-width: 100% !important;
+        width: 100%;
 
         thead tr{
             display: flex;
@@ -1080,12 +1080,6 @@ ul.ui.list li:before{
                     margin: 4px;
                 }
             }
-        }
-
-        #operation *{
-            clear: both;
-            display: block !important;
-            margin: 0.4em;
         }
 
         #todoRow{
@@ -1137,8 +1131,25 @@ ul.ui.list li:before{
     }
 }
 
-#operation *{
-    float: left;
+#mainTable {
+    width: 90vw;
+}
+
+#operation {
+    * {
+        float: left;
+    }
+
+    div {
+        background: none;
+        margin: 0;
+        padding: 5px;
+
+        i {
+            font-size: 23px;
+            margin: 0;
+        }
+    }
 }
 
 .listS{
@@ -1200,16 +1211,15 @@ ul.ui.list li:before{
     bottom: auto;
 
     #modal{
-        width: 60%;
-        height: 40%;
+        width: 50%;
+        height: 50%;
 
-        left: 20%;
-        top: 30%;
-        right: auto;
-        bottom: auto;
+        left: 25%;
+        top: 25%;
 
         #todoInputs {
-            width: 90% !important;
+            width: 90%;
+            margin: auto;
         }
 
         #todoInputs .ui.input {
@@ -1277,13 +1287,19 @@ ul.ui.list li:before{
 
     position: fixed;
     left: 100vw;
-    display: none;
+    display: block;
     width: 794px;
 
-    #container{
-        font-family: 'Segoe UI', sans-serif;
-        font-size: 15px;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 15px;
 
+    #footer {
+        font-size: 0.95em;
+        margin-top: 10vh;
+        text-align: center;
+    }
+
+    #container{
         width: 65%;
         display: flex;
         justify-content: center;
@@ -1330,6 +1346,24 @@ ul.ui.list li:before{
             th, td{
                 border: 1px solid black;
                 padding: 4px;
+            }
+
+            tr > th {
+                &:first-child{
+                    max-width: 5%;
+                }
+
+                &:nth-child(2){
+                    width: 40%;
+                }
+
+                &:nth-child(3){
+                    max-width: 10%;
+                }
+
+                &:last-child{
+                    max-width: 25%;
+                }
             }
 
             tr:last-child(){

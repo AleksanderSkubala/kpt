@@ -1,28 +1,22 @@
 function doPDF(kptName){
-
-    document.querySelector('#konspekt').style.display = 'flex';
-    var pdf = new jsPDF('p', 'mm', 'a4');
+    var pdf = new jsPDF('p', 'mm', 'a4'),
+    source = document.querySelector('#konspekt').outerHTML;
 
     var specialElementHandlers = {
         '#konspekt': function(element, renderer) {
         return true;
     }};
 
-    pdf.fromHTML(document.querySelector('#konspekt').outerHTML, {
+    pdf.fromHTML(source, {
         'pagesplit': true,
         'elementHandlers': specialElementHandlers
     });
 
     pdf.save(kptName+'.pdf');
     console.log('formHTML');
-    document.querySelector('#konspekt').style.display = 'none';
-
 }
 
 function doHTML(kptName) {
-
-    document.querySelector('#konspekt').style.display = 'flex';
-
     html2canvas(document.querySelector('#konspekt'),{
             dpi: 300,
         }).then(canvas => {
@@ -33,14 +27,10 @@ function doHTML(kptName) {
 
             pdf.addImage(img, 'PNG', 0, 0, 0, counter);
             pdf.save(kptName+'.pdf');
-
-            document.querySelector('#konspekt').style.display = 'none';
     });
 }
 
 function addPDF(kptName){
-    document.querySelector('#konspekt').style.display = 'flex';
-
     var pdf = new jsPDF('p', 'mm', 'a4');
 
     pdf.internal.scaleFactor = 11;
@@ -56,21 +46,15 @@ function addPDF(kptName){
             pdf.save(kptName+'.pdf');
         }
     );
-
-    document.querySelector('#konspekt').style.display = 'none';
 }
 
 function doPNG(kptName){
-    document.querySelector('#konspekt').style.display = 'flex';
-
     html2canvas(document.querySelector('#konspekt'),
     {dpi: 300})
         .then(function(canvas) {
             canvas.toBlob(function(blob) {
                 window.saveAs(blob, kptName+".png");
             });
-
-            document.querySelector('#konspekt').style.display = 'none';
         }
     );
 

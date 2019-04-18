@@ -47,14 +47,19 @@ export default {
 }
 
 .main.container{
-    margin-right: auto;
-    margin-top: 5.5em;
-    margin-bottom: 3em;
+    margin: 6em 5vw 3em !important;
+}
+
+
+@media only screen and (max-width: 764px){
+    .ui.main.container{
+        margin: 6em 1em 3em !important;
+    }
 }
 
 @media only screen and (max-width: 575px){
     .ui.main.container{
-        margin-left: 0 !important;
+        margin: 6em .3em 3em !important;
     }
 }
 

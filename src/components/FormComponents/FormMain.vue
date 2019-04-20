@@ -994,7 +994,11 @@ ul.ui.list li:before{
 }
 
 .add{
-    margin: auto;
+    width: 100%;
+}
+
+#mainTable > tbody > tr > td {
+    box-sizing: border-box;
 }
 
 @media only screen and (max-width: 767px){
@@ -1295,7 +1299,7 @@ ul.ui.list li:before{
 
     #footer {
         font-size: 0.95em;
-        margin-top: 10vh;
+        margin-top: 7vh;
         text-align: center;
     }
 

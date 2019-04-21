@@ -6,10 +6,13 @@ const outerHeight = function(el){
 };
 
 NodeList.prototype.cut = function(marginBottom){
+    var index = 0;
     var height = 0;
     var pages = 1;
     var margin = 0;
     var lastMargin = 0;
+    var nodes = this;
+    var fragment = document.createDocumentFragment();
 
     this.forEach(el => {
         height += outerHeight(el);
@@ -19,8 +22,17 @@ NodeList.prototype.cut = function(marginBottom){
             pages = Math.floor(pages);
             margin = outerHeight(el)-(height-(pages*1123)); //margin var is equal height of the piece of element that is on the sheet
             el.style.marginTop = `${margin+lastMargin+marginBottom}px`; //positioning the element on the border of the page with marginBot
+
+            //multipage functionality
+            for (var i = index; i < this.length; i++) {
+                fragment.appendChild(this[i]);
+            }
+            nodes = fragment.childNodes;
+            console.log(nodes, this);
+            //nodes.cut(marginBottom);
         } else {
             lastMargin = parseInt(window.getComputedStyle(el).getPropertyValue('margin-bottom')); //setting last(for next iteration) margin bottom as present margin botom
+            index += 1;
         }
     });
 };

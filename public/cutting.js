@@ -37,8 +37,8 @@ NodeList.prototype.cut = function(marginBottom){
             //multipage functionality
             for (var i2 = index; i2 < this.length; i2++) {
                 fragment.appendChild(this[i2]);
+                parent.appendChild(this[i2]);
             }
-            parent.appendChild(fragment);
             nodes = fragment.childNodes;
             nodes.cut(marginBottom);
             break;

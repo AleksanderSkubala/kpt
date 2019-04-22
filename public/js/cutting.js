@@ -5,10 +5,6 @@ const outerHeight = function(el){
     return elHeight;
 };
 
-const cutFun = function(arr, mar) {
-    arr.cut(mar);
-};
-
 NodeList.prototype.cut = function(marginBottom = 0){
     var parent = this[0];
     var index = 0;
@@ -43,10 +39,6 @@ NodeList.prototype.cut = function(marginBottom = 0){
         }
     }
 };
-
-var elements = document.querySelectorAll('.box');
-console.log(elements);
-elements.cut();
 
 // USAGE:
 // NodeList.cut(margin);

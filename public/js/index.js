@@ -1,6 +1,9 @@
+document.querySelectorAll('#konspekt div').cut(20);
+var el = document.querySelector('#konspekt');
+
 function doPDF(kptName){
     var pdf = new jsPDF('p', 'mm', 'a4'),
-    source = document.querySelector('#konspekt').outerHTML;
+    source = el.outerHTML;
 
     var specialElementHandlers = {
         '#konspekt': function(element, renderer) {
@@ -17,7 +20,7 @@ function doPDF(kptName){
 }
 
 function doHTML(kptName) {
-    html2canvas(document.querySelector('#konspekt'),{
+    html2canvas(el,{
             dpi: 300,
         }).then(canvas => {
             var pdf = new jsPDF('p', 'mm', 'a4');
@@ -35,7 +38,7 @@ function addPDF(kptName){
 
     pdf.internal.scaleFactor = 11;
 
-    pdf.addHTML(document.querySelector('#konspekt'), 0, 0,
+    pdf.addHTML(el, 0, 0,
         {
             pagesplit: true,
             background: '#fff',
@@ -49,7 +52,7 @@ function addPDF(kptName){
 }
 
 function doPNG(kptName){
-    html2canvas(document.querySelector('#konspekt'),
+    html2canvas(el,
     {dpi: 300})
         .then(function(canvas) {
             canvas.toBlob(function(blob) {

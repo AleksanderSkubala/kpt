@@ -275,7 +275,7 @@
                         </thead>
                         <tbody>
                             <tr v-for="item in todo.list" :key="item.name">
-                                <td>{{todoIndex(item)}} .</td>
+                                <td>{{todoIndex(item)}}</td>
                                 <td>
                                     <div>{{item.content}}</div>
                                     <div>{{item.time}}</div>
@@ -344,7 +344,7 @@
                         </thead>
                         <tbody>
                             <tr v-for="item in todo.list" :key="item.name">
-                                <td>{{todoIndex(item)}} .</td>
+                                <td>{{todoIndex(item)}}</td>
                                 <td>{{item.content}}</td>
                                 <td>{{item.time}}</td>
                                 <td>{{item.materials}}</td>

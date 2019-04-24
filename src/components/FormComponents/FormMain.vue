@@ -6,54 +6,55 @@
     <div id="konspekt">
         <div id="container">
             <div id="content">
-                <h1>Zbiórka "{{title.content}}"</h1>
-                <div id="details">
-                    <p><b>Odpowiedzialny: </b>{{main.content}}</p>
-                    <p><b>Kiedy: </b>{{when.content}}</p>
-                    <div id="people">
-                        <p id="main">Prowadzący:</p>
-                        <ol v-for="item in people.list" :key="item.name">
-                            <li>{{indexList(item, 1)}}. {{item.name}}</li>
-                        </ol>
-                    </div>
-                    <div id="goals">
-                        <p id="main">Cele(osoba po zbiórce powinna umieć) :</p>
-                        <ol v-for="item in goals.list" :key="item.name">
-                            <li>{{indexList(item, 2)}}. {{item.name}}</li>
-                        </ol>
-                    </div>
-                    <div id="added" v-if="added.list.length > 0">
-                        <p id="main">Załączniki:</p>
-                        <ol v-for="item in added.list" :key="item.name">
-                            <li>{{indexList(item, 3)}}. {{item.name}}</li>
-                        </ol>
-                    </div>
-                    <p id="main">Przebieg: </p>
-                </div>
-                <table id="todo" border="1">
-                    <thead>
-                        <tr>
-                            <th>Lp.</th>
-                            <th>Treść</th>
-                            <th>Czas</th>
-                            <th>Materiały</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="item in todo.list" :key="item.name">
-                            <th>{{todoIndex(item)}}. </th>
-                            <th>{{item.content}}</th>
-                            <th>{{item.time}}</th>
-                            <th>{{item.materials}}</th>
-                        </tr>
-                    </tbody>
-                </table>
+
             </div>
+            <h1>Zbiórka "{{title.content}}"</h1>
+            <div id="details">
+                <p><b>Odpowiedzialny: </b>{{main.content}}</p>
+                <p><b>Kiedy: </b>{{when.content}}</p>
+                <div id="people">
+                    <p id="main">Prowadzący:</p>
+                    <ol v-for="item in people.list" :key="item.name">
+                        <li>{{indexList(item, 1)}}. {{item.name}}</li>
+                    </ol>
+                </div>
+                <div id="goals">
+                    <p id="main">Cele(osoba po zbiórce powinna umieć) :</p>
+                    <ol v-for="item in goals.list" :key="item.name">
+                        <li>{{indexList(item, 2)}}. {{item.name}}</li>
+                    </ol>
+                </div>
+                <div id="added" v-if="added.list.length > 0">
+                    <p id="main">Załączniki:</p>
+                    <ol v-for="item in added.list" :key="item.name">
+                        <li>{{indexList(item, 3)}}. {{item.name}}</li>
+                    </ol>
+                </div>
+                <p id="main">Przebieg: </p>
+            </div>
+            <table id="todo" border="1">
+                <thead>
+                    <tr>
+                        <th>Lp.</th>
+                        <th>Treść</th>
+                        <th>Czas</th>
+                        <th>Materiały</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item in todo.list" :key="item.name">
+                        <th>{{todoIndex(item)}}. </th>
+                        <th>{{item.content}}</th>
+                        <th>{{item.time}}</th>
+                        <th>{{item.materials}}</th>
+                    </tr>
+                </tbody>
+            </table>
+            <p id="footer">
+                Konspekt wygenerowany w Generatorze Konspektów: <br/>
+                <a href="https://aleksanderskubala.github.io/kpt">https://aleksanderskubala.github.io/kpt</a>
+            </p>
         </div>
-        <p id="footer">
-            Konspekt wygenerowany w Generatorze Konspektów: <br/>
-            <a href="https://aleksanderskubala.github.io/kpt">https://aleksanderskubala.github.io/kpt</a>
-        </p>
     </div>
 
 <!--END OF TEMPLATE-->
@@ -1174,9 +1175,14 @@ ul.ui.list li:before{
     float: left;
 }
 
+#todoTable {
+    text-align: center;
+}
+
 #todoDiv {
     border: none !important;
     box-shadow: none;
+    margin: auto auto;
 }
 
 .processInput2{
@@ -1294,37 +1300,34 @@ ul.ui.list li:before{
     display: block;
     width: 794px;
 
+    background-color: white;
+    z-index: 15;
+
     font-family: 'Segoe UI', sans-serif;
     font-size: 15px;
 
-    #footer {
-        font-size: 0.95em;
-        margin-top: 7vh;
-        text-align: center;
-    }
-
     #container{
         width: 65%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         margin: auto;
 
-        #content{
-            width: 100%;
+        #footer {
+            font-size: 0.95em;
+            margin-top: 5vh;
+            text-align: center;
+        }
 
-            #details{
-                margin-bottom: 20px;
-                float: left;
-            }
+        #details{
+            margin-bottom: 20px;
+            float: left;
+        }
 
-            #main{
-                font-weight: bold;
-            }
+        #main{
+            font-weight: bold;
+        }
 
-            p{
-                padding-top: 2px;
-            }
+        p{
+            padding-top: 2px;
+        }
 
             ul{
                 padding: 1px;
@@ -1345,7 +1348,7 @@ ul.ui.list li:before{
             justify-content: center;
 
             border-collapse: collapse;
-            border: 1px solid black;
+            border: none;
 
             th, td{
                 border: 1px solid black;
@@ -1354,19 +1357,19 @@ ul.ui.list li:before{
 
             tr > th {
                 &:first-child{
-                    max-width: 5%;
+                    max-width: 5% !important;
                 }
 
                 &:nth-child(2){
-                    width: 40%;
+                    width: 40% !important;
                 }
 
                 &:nth-child(3){
-                    max-width: 10%;
+                    max-width: 10% !important;
                 }
 
                 &:last-child{
-                    max-width: 25%;
+                    max-width: 25% !important;
                 }
             }
 
@@ -1374,7 +1377,6 @@ ul.ui.list li:before{
                 border-bottom: 1px solid black;
             }
         }
-    }
 
     h1:first-child{
         margin: 40px;

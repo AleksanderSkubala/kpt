@@ -1,5 +1,7 @@
 const setup = function() {
-    document.querySelector('#konspekt').childNodes.cut(50, 1029+50);
+    var el = document.querySelector('#container #todo tbody');
+    var margin = 60; //40 - border
+    el.childNodes.cut(margin, 469+margin, 940+margin);
 }
 
 function doPDF(kptName){

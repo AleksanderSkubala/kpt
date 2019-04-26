@@ -370,13 +370,13 @@
                     </table>
                     <div class="ui segment pc" id="todoDiv">
                         <div id="todoInputs">
-                            <div class="ui input processInput2" style="max-width: 40% !important;">
+                            <div class="ui input processInput2">
                                 <input type="text" placeholder="Treść" v-model="todo.probablyContent"/>
                             </div>
-                            <div class="ui input processInput2"  style="max-width: 20% !important;">
+                            <div class="ui input processInput2">
                                 <input type="text" placeholder="Czas" v-model="todo.probablyTime"/>
                             </div>
-                            <div class="ui input processInput2" style="max-width: 30% !important;">
+                            <div class="ui input processInput2">
                                 <input type="text" placeholder="Materiały" v-model="todo.probablyMaterials"/>
                             </div>
                             <div class="ui buttons" id="todoBtn">
@@ -1004,6 +1004,11 @@ ul.ui.list li:before{
 
 @media only screen and (max-width: 767px){
 
+    #mainTable {
+        border: none !important;
+        margin-top: 0;
+    }
+
     #todoDiv{
         display: none;
     }
@@ -1136,10 +1141,6 @@ ul.ui.list li:before{
     }
 }
 
-#mainTable {
-    width: 90vw;
-}
-
 #operation {
     * {
         float: left;
@@ -1166,8 +1167,22 @@ ul.ui.list li:before{
     max-width: 70%;
 }
 
-.todoInputs {
-    width: 100%;
+#todoInputs {
+    div {
+        box-sizing: border-box;
+    }
+
+    div:first-child {
+        max-width: 50%;
+    }
+
+    div:nth-child(2) {
+        max-width: 20%;
+    }
+
+    div:last-child {
+        max-width: 30%;
+    }
 }
 
 .processInput{

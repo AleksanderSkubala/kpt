@@ -29,7 +29,8 @@ NodeList.prototype.cut = function(marginBottom, currHeight, secondHeight){
             node.setAttribute('style',
             `background: none !important;border: none !important; height: ${margin}px !important;`);
             node.setAttribute('class','space');
-            el.parentNode.insertBefore(node, el);
+            el.parentNode.insertBefore(node.cloneNode(), el);
+            node = null;
 
             height = outerHeight(el);
             pages = 1;

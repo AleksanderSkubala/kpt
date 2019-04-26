@@ -2,9 +2,10 @@
     <div class="ui container" id="container">
         <!--<header class="ui header">
             <FormHeader @back="$emit('back')" @newK="newK()"/>
-        </header>--> <!--It's meged with FormMain-->
+        </header>--> <!--It's merged with FormMain-->
         <main class="ui main text container" >
             <FormMain @back="$emit('back')" :konspektData="konspektData"/>
+            <p id="footer">Created with <i>&#10084;</i> by Aleksander Skubała </br> &#x24D2; Copyright - All rights reserved.</p>
         </main>
     </div>
 </template>
@@ -47,7 +48,18 @@ export default {
 }
 
 .main.container{
-    margin: 6em 5vw 3em !important;
+    margin: auto auto 3em;
+}
+
+#footer {
+    font-size: .9em;
+    text-align: center;
+    margin-top: 2em;
+
+    i {
+        color: #E53A40;
+        font-style: normal;
+    }
 }
 
 
@@ -58,8 +70,12 @@ export default {
 }
 
 @media only screen and (max-width: 575px){
-    .ui.main.container{
-        margin: 6em .3em 3em !important;
+    .ui.main.text.container{
+        margin: 4em 0 3em !important;
+    }
+
+    .ui.container {
+        margin: 0 !important;
     }
 }
 

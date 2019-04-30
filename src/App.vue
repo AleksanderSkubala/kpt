@@ -6,7 +6,6 @@
       <main class="ui main text container">
         <List  @createFrom="createFrom"/>
       </main>
-      <p id="footer">Created with <i>&#10084;</i> by Aleksander Skubała </br> &#x24D2; Copyright - All rights reserved.</p>
     </div>
   </transition>
   <transition name="slider">
@@ -69,17 +68,6 @@ export default {
 }
 .fade-enter, .fade-leave-to {
    opacity: 0;
-}
-
-#footer {
-    font-size: .99em;
-    text-align: center;
-    margin-top: 2em;
-
-    i {
-        color: #E53A40;
-        font-style: normal;
-    }
 }
 
 </style>

@@ -171,7 +171,7 @@
                                             <div v-if="item.edit === false">
                                                 <div class="itemName">{{item.name}}</div>
                                                 <div class="ui right floated button editBtn" style="padding-top: 0;" @click="deleteList(0, item)">
-                                                    <i class="ui cancel outline icon editIcon"></i>
+                                                    <i class="ui cancel icon editIcon"></i>
                                                 </div>
                                                 <div class="ui right floated button editBtn" style="padding-top: 0;" @click="editList(0, item)">
                                                     <i class="ui edit outline icon editIcon"></i>
@@ -222,7 +222,7 @@
                                             <div v-if="item.edit === false">
                                                 <div class="itemName">{{item.name}}</div>
                                                 <div class="ui right floated button editBtn" style="padding-top: 0;" @click="deleteList(1, item)">
-                                                    <i class="ui cancel outline icon editIcon"></i>
+                                                    <i class="ui cancel icon editIcon"></i>
                                                 </div>
                                                 <div class="ui right floated button editBtn" style="padding-top: 0;" @click="editList(1, item)">
                                                     <i class="ui edit outline icon editIcon"></i>
@@ -321,7 +321,7 @@
                                             <i class="ui plus icon" style="margin: 0;"></i>
                                         </button>
                                         <button class="ui negative button"  @click="todoCancel" tabindex="0">
-                                            <i class="ui plus icon cancelIcon" style="margin: 0;"></i>
+                                            <i class="ui cancel icon" style="margin: 0;"></i>
                                         </button>
                                     </div>
                                 </td>
@@ -384,7 +384,7 @@
                                     <i class="ui plus icon" style="margin: 0;"></i>
                                 </button>
                                 <button class="ui negative button" @click="todoCancel" tabindex="0">
-                                    <i class="ui plus icon cancelIcon" style="margin: 0;"></i>
+                                    <i class="ui cancel icon" style="margin: 0;"></i>
                                 </button>
                             </div>
                         </div>
@@ -397,13 +397,13 @@
                 <div id="overlay" v-if="todo.edit.isEditing">
                     <div id="modal" class="ui card">
                         <div id="todoInputs">
-                            <div class="ui input processInput2">
+                            <div class="ui input">
                                  <input type="text" placeholder="Treść" v-model="todo.edit.editContent"/>
                              </div>
-                            <div class="ui input processInput2">
+                            <div class="ui input">
                                 <input type="text" placeholder="Czas" v-model="todo.edit.editTime"/>
                             </div>
-                            <div class="ui input processInput2">
+                            <div class="ui input">
                                 <input type="text" placeholder="Materiały" v-model="todo.edit.editMaterials"/>
                             </div>
                             <br/>
@@ -412,7 +412,7 @@
                                     <i class="ui check icon" style="margin: 0;"></i>
                                 </button>
                                 <button class="ui negative button" @click="todoEditCancel" tabindex="0">
-                                    <i class="ui plus icon cancelIcon" style="margin: 0;"></i>
+                                    <i class="ui cancel icon" style="margin: 0;"></i>
                                 </button>
                             </div>
                         </div>
@@ -436,7 +436,7 @@
                                             <div v-if="item.edit === false">
                                                 <div class="itemName">{{item.name}}</div>
                                                 <div class="ui right floated button editBtn" style="padding-top: 0;" @click="deleteList(2, item)">
-                                                    <i class="ui cancel outline icon editIcon"></i>
+                                                    <i class="ui cancel icon editIcon"></i>
                                                 </div>
                                                 <div class="ui right floated button editBtn" style="padding-top: 0;" @click="editList(2, item)">
                                                     <i class="ui edit outline icon editIcon"></i>
@@ -1105,24 +1105,26 @@ ul.ui.list li:before{
     }
 
     #overlay #modal{
-        width: 95vw !important;
-        height: 95vh !important;
+        width: 90vw !important;
+        height: 90vh !important;
 
-        top: 2.5vh !important;
-        left: 2.5vw !important;
+        top: 5vh !important;
+        left: 3vw !important;
 
         display: flex;
         align-items: center;
         justify-content: center;
 
-        #todoInputs .ui.input {
-            display: table !important;
+        #todoInputs .ui.input{
             width: 100% !important;
-            clear: both;
 
             input {
                 width: 100% !important;
             }
+        }
+
+        #todoBtn {
+            margin: 0;
         }
     }
 }
@@ -1248,9 +1250,8 @@ ul.ui.list li:before{
         }
 
         #todoInputs .ui.input {
-            display: table !important;
-            width: 100% !important;
-            clear: both;
+            display: block;
+            width: 100%;
 
             input {
                 width: 60%;

@@ -407,7 +407,7 @@
                                 <input type="text" placeholder="Materiały" v-model="todo.edit.editMaterials"/>
                             </div>
                             <br/>
-                            <div class="ui buttons" id="todoBtn">
+                            <div class="ui buttons">
                                 <button class="ui positive button" @click="todoEditConfirm" tabindex="0">
                                     <i class="ui check icon" style="margin: 0;"></i>
                                 </button>
@@ -1117,13 +1117,6 @@ ul.ui.list li:before{
                 width: 100% !important;
             }
         }
-
-        #todoBtn{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0;
-        }
     }
 }
 
@@ -1215,11 +1208,6 @@ ul.ui.list li:before{
 
 .time {
     max-width: 10% !important;
-}
-
-#todoBtn {
-    clear: both;
-    margin-top: 10px;
 }
 
 #overlay {

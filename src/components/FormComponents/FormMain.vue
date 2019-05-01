@@ -1018,11 +1018,6 @@ ul.ui.list li:before{
         padding: 10px;
     }
 
-    #todoBtn{
-        display: flex;
-        justify-content: center;
-    }
-
     #modal {
         width: 100% !important;
         height: 60% !important;
@@ -1123,7 +1118,10 @@ ul.ui.list li:before{
             }
         }
 
-        #todoBtn {
+        #todoBtn{
+            display: flex;
+            justify-content: center;
+            align-items: center;
             margin: 0;
         }
     }
@@ -1251,7 +1249,8 @@ ul.ui.list li:before{
 
         #todoInputs .ui.input {
             display: block;
-            width: 100%;
+            max-width: 100%;
+            margin-bottom: 10px;
 
             input {
                 width: 60%;

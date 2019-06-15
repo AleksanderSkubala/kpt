@@ -1018,17 +1018,11 @@ ul.ui.list li:before{
         padding: 10px;
     }
 
-    #todoBtn{
-        display: flex;
-        justify-content: center;
-    }
-
     #modal {
         width: 100% !important;
         height: 60% !important;
 
-        left: 0% !important;
-        top: 20% !important;
+        margin: auto auto;
 
         .processInput{
             clear: both !important;
@@ -1116,13 +1110,8 @@ ul.ui.list li:before{
         justify-content: center;
 
         #todoInputs .ui.input {
-            display: table !important;
-            width: 100% !important;
-            clear: both;
-
-            input {
-                width: 100% !important;
-            }
+            max-width: 100%;
+            width: 100%;
         }
     }
 }
@@ -1220,11 +1209,12 @@ ul.ui.list li:before{
 #todoBtn {
     clear: both;
     margin-top: 10px;
+    min-width: 50%;
 }
 
 #overlay {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background-color: rgba(0,0,0, .60);
 
     position: fixed;
@@ -1236,25 +1226,26 @@ ul.ui.list li:before{
     bottom: auto;
 
     #modal{
-        width: 50%;
-        height: 50%;
+        $width: 70%;
+        $height: 60%;
 
-        left: 25%;
-        top: 25%;
+        width: $width;
+        height: $height;
+        position: fixed;
+
+        $left: (100% - $width) / 2;
+        left: $left;
+
+        $top: (100% - $height) / 2;
+        top: $top;
 
         #todoInputs {
             width: 90%;
-            margin: auto;
+            margin: auto auto;
         }
 
-        #todoInputs .ui.input {
-            display: table !important;
-            width: 100% !important;
-            clear: both;
-
-            input {
-                width: 60%;
-            }
+        #todoBtn {
+            min-width: 35%;
         }
     }
 }

@@ -69,17 +69,17 @@ function doPNG(kptName){
 ///MAIN FUNCTION///
 
 function downloadFILE(request, name, dataK){
-    setup();
+    split();
     switch(request){
         case 'fromHTML':
             doPDF(name);
         break;
 
-        case 'addHTML':
+        case 'addHTML': //higher
             addPDF(name);
         break;
 
-        case 'html2canvas':
+        case 'html2canvas': //lower
             doHTML(name);
         break;
 

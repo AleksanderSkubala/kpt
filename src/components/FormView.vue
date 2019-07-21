@@ -5,7 +5,7 @@
         </header>--> <!--It's merged with FormMain-->
         <main class="ui main text container" >
             <FormMain @back="$emit('back')" :konspektData="konspektData"/>
-            <p id="footer">Created with <i>&#10084;</i> by Aleksander Skubała </br> &#x24D2; Copyright - All rights reserved.</p>
+            <p id="footer">Created with <i>&#10084;</i> by Aleksander Skubała </br> (I know that this app is badly built, but I love it ;D) </br> &#x24D2; Copyright - All rights reserved.</p>
         </main>
     </div>
 </template>

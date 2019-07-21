@@ -4,7 +4,7 @@
 <!--TEMPLATE-->
 
     <div id="konspekt">
-        <div id="container">
+        <div class="page">
             <div id="content">
 
             </div>
@@ -33,7 +33,7 @@
                 <p id="main">Przebieg: </p>
             </div>
             <table id="todo" border="1">
-                <thead>
+                <thead id="todoHead">
                     <tr>
                         <th>Lp.</th>
                         <th>Treść</th>
@@ -917,7 +917,6 @@ export default {
                 };
 
                 var oldData = this.konspektData ? JSON.parse(this.konspektData) :
-                console.table(oldData);
                 save(elData, oldData);
             }else{
                 can = true;
@@ -1312,9 +1311,10 @@ ul.ui.list li:before{
     font-family: 'Segoe UI', sans-serif;
     font-size: 15px;
 
-    #container{
+    .page{
         width: 65%;
         margin: auto;
+        margin-bottom: 40px;
 
         #footer {
             font-size: 0.95em;

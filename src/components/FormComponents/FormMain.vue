@@ -1314,7 +1314,7 @@ ul.ui.list li:before{
     .page{
         width: 65%;
         margin: auto;
-        margin-bottom: 40px;
+        margin-bottom: 15px;
 
         #footer {
             font-size: 0.95em;

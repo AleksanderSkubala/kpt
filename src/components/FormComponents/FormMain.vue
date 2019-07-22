@@ -51,8 +51,8 @@
                 </tbody>
             </table>
             <p id="footer">
-                Konspekt wygenerowany w Generatorze Konspektów: <br/>
-                <a href="https://aleksanderskubala.github.io/kpt">https://aleksanderskubala.github.io/kpt</a>
+                Konspekt wygenerowany w Generatorze Konspektów <br/>
+                <a href="">https://aleksanderskubala.github.io/kpt</a>
             </p>
         </div>
     </div>
@@ -860,6 +860,33 @@ export default {
         todoEditCancel() {
             this.todo.edit.isEditing = false;
         },
+        save(data, oldData) {
+            var get = window.localStorage.getItem('konspekty');
+            console.log('yeah');
+
+            if(!get) {
+                window.localStorage.setItem('konspekty', JSON.stringify({konspekty: []}));
+                save();
+            } else if(oldData && data) {
+                get = JSON.parse(get);
+                var index = get.konspekty.indexOf(oldData);
+
+                get.konspekty.splice(index, 1);
+                get.konspekty.unshift(data);
+
+                get.konspekty.slice(0, 9);
+                get = JSON.stringify(get);
+                window.localStorage.setItem('konspekty', get);
+            } else if( !oldData && data ) {
+                get = JSON.parse(get);
+
+                get.konspekty.unshift(data);
+                get = JSON.stringify(get);
+                window.localStorage.setItem('konspekty', get);
+            } else {
+                console.error('You have to push any data!!!');
+            }
+        },
         newK() {
 
             var can = true;
@@ -899,13 +926,7 @@ export default {
                 can = false;
             }
 
-            if(can === true){
-                if(document.querySelector('#konspekt').style.offsetHeight < 1123){
-                    downloadFILE('html2canvas', kptName);
-                }   else{
-                    downloadFILE('addHTML', kptName);
-                }
-
+            if(can){
                 var elData = {
                     title: this.title.content,
                     date: this.when.content,
@@ -916,8 +937,14 @@ export default {
                     added: this.added.list,
                 };
 
-                var oldData = this.konspektData ? JSON.parse(this.konspektData) :
+                var oldData = this.konspektData ? JSON.parse(this.konspektData) : null
                 save(elData, oldData);
+
+                if(document.querySelector('#konspekt').style.offsetHeight < 1123){
+                    downloadFILE('html2canvas', kptName);
+                } else {
+                    downloadFILE('addHTML', kptName);
+                }
             }else{
                 can = true;
                 console.error("App cant' do pdf file.");

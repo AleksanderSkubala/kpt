@@ -1,4 +1,4 @@
-const save = function (data, oldData){
+var save = function (data, oldData){
     var get = window.localStorage.getItem('konspekty');
 
     if(!get) {
